@@ -1,0 +1,28 @@
+% Test Temp File
+clear all;
+v=[-1:0.005:1];
+Fs = 15;
+Fb = 25;
+Fv = 7;
+Cv = 3;
+Vt = 0.0005;
+Num=size(v,2);
+for i=1:Num
+    Ff(i) = Friction(Fv,Fs,Fb,Cv,Vt,v(i));
+end
+figure(1);
+plot(v,Ff);
+grid on;
+
+%%
+Smp =100;
+pos = rand(1,Smp);
+neg = - rand(1,Smp);
+Ffp = 0;
+Ffn = 0;
+for i=1:Smp
+    Ffp = Ffp + Friction(Fv,Fs,Fb,Cv,Vt,pos(i));
+    Ffn = Ffn + Friction(Fv,Fs,Fb,Cv,Vt,neg(i));
+end
+disp('Sum of positive and negative friciton:');
+disp([Ffp+Ffn]);

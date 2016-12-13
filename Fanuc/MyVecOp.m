@@ -1,0 +1,11 @@
+function ret = MyVecOp(alpha,beta)
+ret(1,1) = alpha(1)*beta(1) + alpha(2)*beta(2) + alpha(3)*beta(3);
+ret(1,2) = alpha(2)*beta(6) - alpha(3)*beta(5) + alpha(6)*beta(2) - alpha(5)*beta(3);
+ret(1,3) = alpha(3)*beta(4) - alpha(1)*beta(6) + alpha(4)*beta(3) - alpha(6)*beta(1);
+ret(1,4) = alpha(1)*beta(5) - alpha(2)*beta(4) + alpha(5)*beta(1) - alpha(4)*beta(2);
+ret(1,5) = alpha(4)*beta(4);
+ret(1,6) = alpha(5)*beta(5);
+ret(1,7) = alpha(6)*beta(6);
+ret(1,8) = alpha(4)*beta(5) + alpha(5)*beta(4);
+ret(1,9) = alpha(4)*beta(6) + alpha(6)*beta(4);
+ret(1,10)= alpha(5)*beta(6) + alpha(6)*beta(5);
