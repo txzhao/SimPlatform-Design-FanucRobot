@@ -1,0 +1,34 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   3 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "isStable"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "doneDoubleBufferReInit"\
+      SFName       ""\
+      Path         ""\
+    }\
+    ChartData {\
+      Name         "is_active_c5_AugPDTask"\
+      SFName       "is_active_c5_AugPDTask"\
+      Path         "is_active_c5_AugPDTask"\
+      IsTestPoint  1\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
