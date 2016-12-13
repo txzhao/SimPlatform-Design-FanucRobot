@@ -1,0 +1,15 @@
+# Make settings for EulerWd_Min 
+COMPILER=cl 
+COMPFLAGS=/c /GR /W3 /EHs /nologo /MD -I"C:\MySoftrware\Matlab2014\extern\include" -I"C:\MySoftrware\Matlab2014\simulink\include" -I"C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\redist\amd64\Microsoft.VC90.CRT"  /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE 
+OPTIMFLAGS=/O2 /Oy- /DNDEBUG 
+DEBUGFLAGS=/Z7 
+LINKER=link 
+LINKFLAGS= /nologo /manifest kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /incremental:NO /export:mexFunction /DLL /LIBPATH:"C:\MySoftrware\Matlab2014\extern\lib\win64\microsoft" libmx.lib libmex.lib libmat.lib  /EXPORT:mexFunction 
+LINKOPTIMFLAGS=
+LINKDEBUGFLAGS=/debug /PDB:".\EulerWd_Min_mex.mexw64.pdb" 
+MATLAB_ARCH=win64
+BORLAND=
+OMPFLAGS= 
+OMPLINKFLAGS= 
+EMC_COMPILER=msvc90
+EMC_CONFIG=optim
