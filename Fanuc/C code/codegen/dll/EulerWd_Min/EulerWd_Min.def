@@ -1,0 +1,4 @@
+EXPORTS
+EulerWd_Min
+EulerWd_Min_initialize
+EulerWd_Min_terminate
