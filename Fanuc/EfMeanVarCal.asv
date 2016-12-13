@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%@Copyright(c),Googol Shenzhen Tech. Ltd
+%@File Name: EfMeanVarCal.m
+%@Author: Dai Dan
+%@Version: 1.0
+%@Date: 09/03/2014
+%
+%@Description: To Calculate Mean and Variance Matrix of torque and position
+%@Input:
+%File: Data File
+%IniEnc: Initial Encoder value
+%I2T: Torque Constants
+%Gear: Gear Ratio
+%EncRes: Encoder Resolution
+%IniJnt: Initial Joint Angles
+%SmpT: Sample Frequency
+%@Output:
+%Trq: Averaged Torque
+%Jnt: Averaged Joint Angles
+%Var: Variance of Torque noise
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [Trq,Jnt,Vel,Acc,Var]=EfMeanVarCal(File,IniEnc,I2T,Gear,EncRes,IniJnt,SmpT)
+
+D2R = pi/180;
+R2D = 180/pi;
+
+%d=fdesign.lowpass('Fp,Fst,Ap,Ast',0.1,0.15,1,70);
+d=fdesign.lowpass('Fp,Fst,Ap,Ast',0.006,0.02,1,70);
+Hd = design(d,'equiripple');
+
+%%%%%%%Torque Vel Pos | Torque Vel Pos | ......
+for i=1:6
+    Axis{i}=importdata(File{i});
+    Current{i}=Axis{i}(:,1:3:30);
+    Torque{i}=Axis{i}(:,1:3:30)*I2T(i)*Gear(i);
+    sTorque{i}=filtfilt(Hd.Numerator,1,Torque{i});
+    Joint{i}=(Axis{i}(:,3:3:30) - IniEnc(i))/EncRes/Gear(i)*2*pi + IniJnt(i); 
+end
+
+
+for i=1:6
+    N(i)=size(Torque{i},1);
+    mJnt{i}=mean(Joint{i},2);
+    mTrq{i}=mean(Torque{i},2);
+    vTrq{i}=var(Torque{i},1,2);
+    tVar(i)=sum(vTrq{i})/(10*N(i)-1); 
+    smTrq{i}=mean(sTorque{i},2);
+    svTrq{i}=var(sTorque{i},1,2);
+    stVar(i)=sum(svTrq{i})/(10*N(i)-1);    
+end
+Trq=cell2mat(smTrq);
+Jnt=cell2mat(mJnt);
+%Var=stVar;
+
+for i=1:6
+    Jnt(:,i)=smooth(Jnt(:,i));
+end
+%%%%%%%%%%%%%%%%%%
+Nt=size(smTrq,1);
+NFFT=2^nextpow2(Nt);
+f=1/SmpT/2*linspace(0,1,NFFT/2+1);
+for i=1:6
+    fftTrq(:,i)=fft(Trq(:,i),NFFT)/Nt;
+    figure(i+6);
+    plot(f,2*abs(fftTrq(1:NFFT/2+1,i)));
+    grid on;
+    str=sprintf(
+end
+
+
+
+%%%%%%%%%%%%%%Velocity and Acc Computation Based on Frequency Method%%%%%%%%
+Nj=size(Jnt,1);
+Pos=Jnt;
+if mod(Nj,2)~=0 
+    Pos(end,:)=[];
+end
+fs=1/SmpT;
+for i=1:6
+    fftPos(:,i)=fft(Pos(:,i));
+    Ns=size(Pos(:,i),1);
+    fftPos(100:end-100,1)=0;
+    Ks=[0:Ns/2-1,0,-Ns/2+1:-1]';
+    jw=2j*pi*Ks*fs/Ns;
+    fftsVel(:,i)=jw.*fftPos(:,i);
+    Vel(:,i)=real(ifft(fftsVel(:,i)));
+    
+    fftsVel(100:end-100,1)=0;
+    fftsAcc(:,i)=jw.*fftsVel(:,i);
+
+%     fftsAcc(:,i)=-Ks.^2.*fftPos(:,i);
+    Acc(:,i)=real(ifft(fftsAcc(:,i)));
+    if mod(Nj,2)~=0
+        Vel(end+1,i)=0;
+        Acc(end+1,i)=0;
+    end
+    Acc(:,i)=filtfilt(Hd.Numerator,1,Acc(:,i));
+end
+
+for i=1:6
+    Var(i)=max(Trq(:,i))-min(Trq(:,i));
+    
+end
+
+% %%%%%%%%%%%%Result Plotting%%%%%%%%%
+% for i=1:6
+%     figure(i);
+%    
+%     plot([0:1:N(i)-1]*SmpT,Torque{i}(:,1),'b');
+%     hold on;
+%     plot([0:1:N(i)-1]*SmpT,smTrq{i},'r');
+%     hold off;
+%     grid on;
+%     str=sprintf('%d Axis Torque',i);
+%     title(str);
+% end
+% 
+% for i=1:6
+%     figure(i+6);
+%     plot([0:1:N(i)-1]*SmpT,Jnt(:,i));
+%     grid on;
+%     str=sprintf('%d Axis Joint Angle',i);
+%     title(str);
+% end
+% 
+% for i=1:6
+%     figure(i+12);
+%     plot([0:1:N(i)-1]*SmpT,Vel(:,i));
+%     grid on;
+%     str=sprintf('%d Axis Velocity',i);
+%     title(str);
+% end
+
+% for i=1:6
+%     figure(i+18);
+%     plot([0:1:N(i)-1]*SmpT,Acc(:,i));
+%     grid on;
+%     str=sprintf('%d Axis Acceleration',i);
+%     title(str);
+% end
+

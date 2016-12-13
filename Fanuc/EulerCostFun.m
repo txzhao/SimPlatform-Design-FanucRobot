@@ -1,0 +1,173 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%@Copyright(c),Googol Shenzhen Tech. Ltd
+%@File Name: EulerCostFun.m
+%@Author: Dai Dan
+%@Version: 1.0
+%@Date: 12/5/2014
+%
+%@Function: EulerCostFun
+%@Description: Cost function for finding optimal trajectory not considering motor 
+%@Input:
+%X: [Pos1; Vel1; Acc1; Pos2; Vel2; Acc2;...;PosN; VelN; AccN]
+%@Output:
+%Cost: cost
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function Cost=EulerCostFun(X)
+%%%%%%%Priori Knowledge%%%%%%%%%%
+Prior = false;
+if Prior
+DH=[266     300     0       0       1016     0      174;
+    0       0       -pi/2   0       pi      pi       0;
+    0       150     870     170     0       0        0;
+    0       -pi/2   0       -pi/2   -pi/2    -pi/2   0;];
+DH(1,:) = DH(1,:)/1000;
+DH(3,:) = DH(3,:)/1000;
+
+ma1 = 170.31;
+in1 = [5.2954 -0.2565 -0.6366;-0.2565 4.7000 0.2830;-0.6366 0.2829 5.8635];
+cen1 = [0.0407 -0.0528 0.4702];
+
+ma2 = 63.74;
+in2 = [5.8840 0.0072 0.0135;0.0072 6.0178 -0.1907;0.0135 -0.1907 0.3374];
+cen2 = [0.1510 0.1746 0.9687];
+
+ma3 = 98.98;
+in3 = [1.8201 -0.2274 -0.3112;-0.2274 2.2537 -0.1441;-0.3112 -0.1441 1.9485];
+cen3 = [0.1568 -0.0318 1.5191];
+
+ma4 = 24.46;
+in4 = [0.0607 -0.0922 0;-0.0922 1.4493 0;0 0,1.4620];
+cen4 = [0.8245 -0.0110 1.606];
+
+ma5 = 5.24;
+in5 = [0.0191 0.0032 0;0.0032 0.0228 0;0 0 0.0291];
+cen5 = [1.2407 0.0180 1.606];
+
+ma6 = 0.6;
+in6 = [0.0012 0 0;0 0.0007 0;0 0 0.0007];
+cen6 = [1.330 0 1.606];
+
+Ma = [ma1 ma2 ma3 ma4 ma5 ma6]';
+Ie1 = in1(:)';
+Ie2 = in2(:)';
+Ie3 = in3(:)';
+Ie4 = in4(:)';
+Ie5 = in5(:)';
+Ie6 = in6(:)';
+
+Cen = [cen1,cen2,cen3,cen4,cen5,cen6]';
+Ie = [Ie1;Ie2;Ie3;Ie4;Ie5;Ie6];
+
+ez = [0;0;1];
+ex = [1;0;0];
+eo = [0;0;0];
+
+g01_0= expg([eo;ez],DH(2,1))*expg([ez;eo],DH(1,1))*expg([eo;ex],DH(4,1))*expg([ex;eo],DH(3,1));
+g12_0= expg([eo;ez],DH(2,2))*expg([ez;eo],DH(1,2))*expg([eo;ex],DH(4,2))*expg([ex;eo],DH(3,2));
+g23_0= expg([eo;ez],DH(2,3))*expg([ez;eo],DH(1,3))*expg([eo;ex],DH(4,3))*expg([ex;eo],DH(3,3));
+g34_0= expg([eo;ez],DH(2,4))*expg([ez;eo],DH(1,4))*expg([eo;ex],DH(4,4))*expg([ex;eo],DH(3,4));
+g45_0= expg([eo;ez],DH(2,5))*expg([ez;eo],DH(1,5))*expg([eo;ex],DH(4,5))*expg([ex;eo],DH(3,5));
+g56_0= expg([eo;ez],DH(2,6))*expg([ez;eo],DH(1,6))*expg([eo;ex],DH(4,6))*expg([ex;eo],DH(3,6));
+
+
+% %% calculate ri: ith link mass center offset relative to ith joint frame,i=1,2,3,4,5,6
+
+g=g01_0;
+r1 = g\[Cen(1:3);1];
+r1 = r1(1:3);
+g=g*g12_0;
+r2 = g\[Cen(4:6);1];
+r2 = r2(1:3);
+g=g*g23_0;
+r3 = g\[Cen(7:9);1];
+r3 = r3(1:3);
+g=g*g34_0;
+r4 = g\[Cen(10:12);1];
+r4 = r4(1:3);
+g=g*g45_0;
+r5 = g\[Cen(13:15);1];
+r5 = r5(1:3);
+g=g*g56_0;
+r6 = g\[Cen(16:18);1];
+r6 = r6(1:3);
+
+% %% calculate momentt of inertia in Ci,i=1,2,3,4,5,6
+m1  = Ma(1);
+I1  = reshape(Ie(1:9),3,3);
+M1  = [ m1*eye(3),      -m1*hat(r1);
+        m1*hat(r1),    I1 - m1*hat(r1)*hat(r1)];
+
+m2  = Ma(2);
+I2  = reshape(Ie(10:18),3,3);
+M2  = [ m2*eye(3),      -m2*hat(r2);
+        m2*hat(r2),    I2 - m2*hat(r2)*hat(r2)];
+
+m3  = Ma(3);
+I3  = reshape(Ie(19:27),3,3);
+M3  = [ m3*eye(3),      -m3*hat(r3);
+        m3*hat(r3),    I3 - m3*hat(r3)*hat(r3)];
+    
+m4  = Ma(4);
+I4  = reshape(Ie(28:36),3,3);
+M4  = [ m4*eye(3),      -m4*hat(r4);
+        m4*hat(r4),    I4 - m4*hat(r4)*hat(r4)];
+    
+m5  = Ma(5);
+I5  = reshape(Ie(37:45),3,3);
+M5  = [ m5*eye(3),      -m5*hat(r5);
+        m5*hat(r5),    I5 - m5*hat(r5)*hat(r5)];
+    
+m6  = Ma(6);
+I6  = reshape(Ie(46:54),3,3);
+M6  = [ m6*eye(3),      -m6*hat(r6);
+        m6*hat(r6),    I6 - m6*hat(r6)*hat(r6)];    
+    
+Params =[M1(1,1);M1(2,6);-M1(1,6);M1(1,5);M1(4,4);M1(5,5);M1(6,6);M1(4,5);M1(4,6);M1(5,6);
+         M2(1,1);M2(2,6);-M2(1,6);M2(1,5);M2(4,4);M2(5,5);M2(6,6);M2(4,5);M2(4,6);M2(5,6);
+         M3(1,1);M3(2,6);-M3(1,6);M3(1,5);M3(4,4);M3(5,5);M3(6,6);M3(4,5);M3(4,6);M3(5,6);
+         M4(1,1);M4(2,6);-M4(1,6);M4(1,5);M4(4,4);M4(5,5);M4(6,6);M4(4,5);M4(4,6);M4(5,6);
+         M5(1,1);M5(2,6);-M5(1,6);M5(1,5);M5(4,4);M5(5,5);M5(6,6);M5(4,5);M5(4,6);M5(5,6);
+         M6(1,1);M6(2,6);-M6(1,6);M6(1,5);M6(4,4);M6(5,5);M6(6,6);M6(4,5);M6(4,6);M6(5,6)];
+     
+Scl = diag(Params); 
+else
+    Scl = eye(60);
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+N = size(X,1)/18;
+Pos = zeros(N,6);
+Vel = zeros(N,6);
+Acc = zeros(N,6);
+for i=1:N
+    Pos(i,:) = X(18*(i-1)+1:18*(i-1)+6)';
+    Vel(i,:) = X(18*(i-1)+7:18*(i-1)+12)';
+    Acc(i,:) = X(18*(i-1)+13:18*i)';
+end
+
+Ld =[266 300 150 870 0 170 1016 174]/1000;
+Wd_N = zeros(6*N,60);
+Lamada1 = 2/5;
+Lamada2 = 2/5;
+Lamada3 = 1/5;
+for i=1:N
+    Wd_N((i-1)*6+1:6*i,:) = EulerWd(Ld,Pos(i,:),Vel(i,:),Acc(i,:))*Scl;
+end
+[Q,R,P] = qr(Wd_N);
+Tau = 6*N*(2.2204e-16)*R(1,1);
+Num = size(find(diag(R)>Tau),1);
+Q1 = Q(:,1:Num);
+R1 = R(1:Num,1:Num);
+W1 = Q1*R1;
+S = svd(W1);
+MaxS = max(S);
+MinS = min(S);
+
+W1_ = W1;
+W1_(find(abs(W1_<1e-4))) = 0;
+MinW = min(abs(W1_(find(W1_~=0))));
+MaxW = max(max(abs(W1_)));
+
+Cost = Lamada1*MaxS/MinS + Lamada2/MinS + Lamada3*MaxW/MinW;
+%Cost = Lamada1*MaxS/MinS + Lamada2/MinS ;
+
