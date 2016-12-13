@@ -1,0 +1,1147 @@
+%implements s13_b0_cgugh_1_Functions "C"
+
+%function AugPDTask_mrdivide_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+real_T Y[16];
+int32_T ip;
+real_T temp;
+real_T b_A[16];
+int8_T ipiv[4];
+int32_T mmj;
+int32_T jj;
+int32_T jp1j;
+int32_T jpiv_offset;
+int32_T jrow;
+int32_T ix;
+real_T s;
+int32_T jA;
+int32_T d_k;
+int32_T i;
+for(i = 0; i < 4; i++) {
+b_A[i << 2] = B[i];
+b_A[1 + (i << 2)] = B[i + 4];
+b_A[2 + (i << 2)] = B[i + 8];
+b_A[3 + (i << 2)] = B[i + 12];
+}
+ipiv[0] = 1;
+ipiv[1] = 2;
+ipiv[2] = 3;
+ipiv[3] = 4;
+for(i = 0; i < 3; i++) {
+mmj = 3 - i;
+jj = i * 5 + 1;
+jp1j = jj + 1;
+ip = mmj + 1;
+d_k = 1;
+ix = jj;
+temp = muDoubleScalarAbs(b_A[jj - 1]);
+for(jrow = 2; jrow <= ip; jrow++) {
+ix++;
+s = muDoubleScalarAbs(b_A[ix - 1]);
+if(s > temp) {
+d_k = jrow;
+temp = s;
+}
+}
+jpiv_offset = d_k - 1;
+if(b_A[(jj + jpiv_offset) - 1] != 0.0) {
+if(jpiv_offset != 0) {
+ipiv[i] = (int8_T)((i + 1) + jpiv_offset);
+jrow = 1 + i;
+ip = jrow + jpiv_offset;
+temp = b_A[jrow - 1];
+b_A[jrow - 1] = b_A[ip - 1];
+b_A[ip - 1] = temp;
+jrow += 4;
+ip += 4;
+temp = b_A[jrow - 1];
+b_A[jrow - 1] = b_A[ip - 1];
+b_A[ip - 1] = temp;
+jrow += 4;
+ip += 4;
+temp = b_A[jrow - 1];
+b_A[jrow - 1] = b_A[ip - 1];
+b_A[ip - 1] = temp;
+jrow += 4;
+ip += 4;
+temp = b_A[jrow - 1];
+b_A[jrow - 1] = b_A[ip - 1];
+b_A[ip - 1] = temp;
+}
+ip = (mmj - 1) + jp1j;
+for(d_k = jp1j; d_k <= ip; d_k++) {
+b_A[d_k - 1] = b_A[d_k - 1] / b_A[jj - 1];
+}
+}
+jrow = 3 - i;
+jA = jj + 4;
+ip = jj + 4;
+for(d_k = 1; d_k <= jrow; d_k++) {
+if(b_A[ip - 1] != 0.0) {
+temp = b_A[ip - 1] * -1.0;
+jj = jp1j;
+jpiv_offset = mmj + jA;
+for(ix = 1 + jA; ix <= jpiv_offset; ix++) {
+b_A[ix - 1] = b_A[jj - 1] * temp + b_A[ix - 1];
+jj++;
+}
+}
+ip += 4;
+jA += 4;
+}
+}
+for(i = 0; i < 4; i++) {
+Y[i << 2] = A[i];
+Y[1 + (i << 2)] = A[i + 4];
+Y[2 + (i << 2)] = A[i + 8];
+Y[3 + (i << 2)] = A[i + 12];
+}
+for(jpiv_offset = 0; jpiv_offset < 4; jpiv_offset++) {
+if(jpiv_offset + 1 != ipiv[jpiv_offset]) {
+ip = ipiv[jpiv_offset];
+temp = Y[jpiv_offset];
+Y[jpiv_offset] = Y[ip - 1];
+Y[ip - 1] = temp;
+temp = Y[jpiv_offset + 4];
+Y[jpiv_offset + 4] = Y[ip + 3];
+Y[ip + 3] = temp;
+temp = Y[jpiv_offset + 8];
+Y[jpiv_offset + 8] = Y[ip + 7];
+Y[ip + 7] = temp;
+temp = Y[jpiv_offset + 12];
+Y[jpiv_offset + 12] = Y[ip + 11];
+Y[ip + 11] = temp;
+}
+}
+for(jpiv_offset = 0; jpiv_offset < 4; jpiv_offset++) {
+ip = jpiv_offset << 2;
+if(Y[ip] != 0.0) {
+for(jrow = 2; jrow <= 4; jrow++) {
+Y[(jrow + ip) - 1] = Y[(jrow + ip) - 1] - b_A[jrow - 1] * Y[ip];
+}
+}
+if(Y[ip + 1] != 0.0) {
+for(jrow = 3; jrow <= 4; jrow++) {
+Y[(jrow + ip) - 1] = Y[(jrow + ip) - 1] - Y[ip + 1] * b_A[jrow + 3];
+}
+}
+if(Y[ip + 2] != 0.0) {
+for(jrow = 4; jrow <= 4; jrow = 5) {
+Y[ip + 3] = Y[ip + 3] - Y[ip + 2] * b_A[11];
+}
+}
+}
+for(jpiv_offset = 0; jpiv_offset < 4; jpiv_offset++) {
+ip = jpiv_offset << 2;
+if(Y[ip + 3] != 0.0) {
+Y[ip + 3] = Y[ip + 3] / b_A[15];
+for(jj = 1; jj <= 3; jj++) {
+Y[(jj + ip) - 1] = Y[(jj + ip) - 1] - Y[ip + 3] * b_A[jj + 11];
+}
+}
+if(Y[ip + 2] != 0.0) {
+Y[ip + 2] = Y[ip + 2] / b_A[10];
+for(jj = 1; jj <= 2; jj++) {
+Y[(jj + ip) - 1] = Y[(jj + ip) - 1] - Y[ip + 2] * b_A[jj + 7];
+}
+}
+if(Y[ip + 1] != 0.0) {
+Y[ip + 1] = Y[ip + 1] / b_A[5];
+for(jj = 1; jj <= 1; jj = 2) {
+Y[ip] = Y[ip] - Y[ip + 1] * b_A[4];
+}
+}
+if(Y[ip] != 0.0) {
+Y[ip] = Y[ip] / b_A[0];
+}
+}
+for(i = 0; i < 4; i++) {
+y[i << 2] = Y[i];
+y[1 + (i << 2)] = Y[i + 4];
+y[2 + (i << 2)] = Y[i + 8];
+y[3 + (i << 2)] = Y[i + 12];
+}
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_expWre_Fcn1(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+real_T R[9];
+real_T p[3];
+real_T wh[9];
+int8_T I[9];
+real_T x;
+real_T b;
+int32_T i;
+real_T wh_0[9];
+int32_T i_0;
+real_T kx_idx;
+/*  exponential of the wrench  */
+if((kx[3] == 0.0) && (kx[4] == 0.0) && (kx[5] == 0.0)) {
+memset((void *)&R[0], 0, 9U * sizeof(real_T));
+R[0] = 1.0;
+R[4] = 1.0;
+R[8] = 1.0;
+p[0] = kx[0] * theta;
+p[1] = kx[1] * theta;
+p[2] = kx[2] * theta;
+} else {
+/*  exponential of the skew matrix */
+/*      if(norm(w)~=1) */
+/*          error('Norm of w must be 1'); */
+/*      end */
+/* wh = diag(sym('wh',[1,3])); */
+for(i = 0; i < 9; i++) {
+wh[i] = 0.0;
+I[i] = 0;
+}
+wh[0] = 0.0;
+wh[4] = 0.0;
+wh[8] = 0.0;
+wh[3] = -kx[5];
+wh[6] = kx[4];
+wh[1] = kx[5];
+wh[7] = -kx[3];
+wh[2] = -kx[4];
+wh[5] = kx[3];
+I[0] = 1;
+I[4] = 1;
+I[8] = 1;
+x = muDoubleScalarSin(theta);
+b = 1.0 - muDoubleScalarCos(theta);
+for(i = 0; i < 3; i++) {
+for(i_0 = 0; i_0 < 3; i_0++) {
+wh_0[i + 3 * i_0] = 0.0;
+wh_0[i + 3 * i_0] = wh_0[3 * i_0 + i] + wh[3 * i_0] * wh[i];
+wh_0[i + 3 * i_0] = wh[3 * i_0 + 1] * wh[i + 3] + wh_0[3 * i_0 + i];
+wh_0[i + 3 * i_0] = wh[3 * i_0 + 2] * wh[i + 6] + wh_0[3 * i_0 + i];
+}
+}
+for(i = 0; i < 3; i++) {
+R[3 * i] = (wh[3 * i] * x + (real_T)I[3 * i]) + wh_0[3 * i] * b;
+R[1 + 3 * i] = (wh[3 * i + 1] * x + (real_T)I[3 * i + 1]) + wh_0[3 * i + 1] * b;
+R[2 + 3 * i] = (wh[3 * i + 2] * x + (real_T)I[3 * i + 2]) + wh_0[3 * i + 2] * b;
+}
+for(i = 0; i < 9; i++) {
+I[i] = 0;
+}
+I[0] = 1;
+I[4] = 1;
+I[8] = 1;
+x = kx[4] * kx[2] - kx[5] * kx[1];
+b = kx[5] * kx[0] - kx[3] * kx[2];
+kx_idx = kx[3] * kx[1] - kx[4] * kx[0];
+for(i = 0; i < 3; i++) {
+wh[3 * i] = (real_T)I[3 * i] - R[3 * i];
+wh[1 + 3 * i] = (real_T)I[3 * i + 1] - R[3 * i + 1];
+wh[2 + 3 * i] = (real_T)I[3 * i + 2] - R[3 * i + 2];
+}
+for(i = 0; i < 3; i++) {
+wh_0[i] = 0.0;
+wh_0[i] = kx[3 + i] * kx[3] + wh_0[i];
+wh_0[i + 3] = 0.0;
+wh_0[i + 3] = kx[3 + i] * kx[4] + wh_0[i + 3];
+wh_0[i + 6] = 0.0;
+wh_0[i + 6] = kx[3 + i] * kx[5] + wh_0[i + 6];
+}
+for(i = 0; i < 3; i++) {
+p[i] = ((wh[i + 3] * b + wh[i] * x) + wh[i + 6] * kx_idx) + (wh_0[i + 6] * kx[2] + (wh_0[i + 3] * kx[1] + wh_0[i] * kx[0])) * theta;
+}
+}
+for(i = 0; i < 3; i++) {
+g[i << 2] = R[3 * i];
+g[1 + (i << 2)] = R[3 * i + 1];
+g[2 + (i << 2)] = R[3 * i + 2];
+}
+g[12] = p[0];
+g[13] = p[1];
+g[14] = p[2];
+g[3] = 0.0;
+g[7] = 0.0;
+g[11] = 0.0;
+g[15] = 1.0;
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_norm_Fcn2(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+real_T y;
+real_T scale;
+boolean_T firstNonZero;
+real_T absxk;
+real_T t;
+y = 0.0;
+scale = 0.0;
+firstNonZero = TRUE;
+if(x[0] != 0.0) {
+scale = muDoubleScalarAbs(x[0]);
+y = 1.0;
+firstNonZero = FALSE;
+}
+if(x[1] != 0.0) {
+absxk = muDoubleScalarAbs(x[1]);
+if(firstNonZero) {
+scale = absxk;
+y = 1.0;
+firstNonZero = FALSE;
+} else if(scale < absxk) {
+t = scale / absxk;
+y = y * t * t + 1.0;
+scale = absxk;
+} else {
+t = absxk / scale;
+y += t * t;
+}
+}
+if(x[2] != 0.0) {
+absxk = muDoubleScalarAbs(x[2]);
+if(firstNonZero) {
+scale = absxk;
+y = 1.0;
+} else if(scale < absxk) {
+t = scale / absxk;
+y = y * t * t + 1.0;
+scale = absxk;
+} else {
+t = absxk / scale;
+y += t * t;
+}
+}
+return scale * muDoubleScalarSqrt(y);
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_subPro3_Fcn3(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+real_T u[3];
+real_T up[3];
+real_T r_idx;
+real_T r_idx_0;
+real_T r_idx_1;
+real_T v_idx;
+theta[0] = 0.0;
+theta[1] = 0.0;
+/*  col vector */
+/*  col vector. */
+/*  rotation axis */
+r_idx = -(kx[1] * kx[5] - kx[2] * kx[4]);
+r_idx_0 = -(kx[2] * kx[3] - kx[0] * kx[5]);
+r_idx_1 = -(kx[0] * kx[4] - kx[1] * kx[3]);
+u[0] = p[0] - r_idx;
+v_idx = q[0] - r_idx;
+u[1] = p[1] - r_idx_0;
+r_idx_0 = q[1] - r_idx_0;
+u[2] = p[2] - r_idx_1;
+r_idx = q[2] - r_idx_1;
+r_idx_1 = (kx[3] * u[0] + kx[4] * u[1]) + kx[5] * u[2];
+up[0] = u[0] - kx[3] * r_idx_1;
+up[1] = u[1] - kx[4] * r_idx_1;
+up[2] = u[2] - kx[5] * r_idx_1;
+r_idx_1 = (kx[3] * v_idx + kx[4] * r_idx_0) + kx[5] * r_idx;
+u[0] = v_idx - kx[3] * r_idx_1;
+u[1] = r_idx_0 - kx[4] * r_idx_1;
+u[2] = r_idx - kx[5] * r_idx_1;
+r_idx = ((p[0] - q[0]) * kx[3] + (p[1] - q[1]) * kx[4]) + (p[2] - q[2]) * kx[5];
+r_idx_0 = muDoubleScalarAtan2(((up[1] * u[2] - up[2] * u[1]) * kx[3] + (up[2] * u[0] - up[0] * u[2]) * kx[4]) + (up[0] * u[1] - up[1] * u[0]) * kx[5], (up[0] * u[0] + up[1] * u[1]) + up[2] * u[2]);
+r_idx_1 = muDoubleScalarAcos(((((up[0] * up[0] + up[1] * up[1]) + up[2] * up[2]) + ((u[0] * u[0] + u[1] * u[1]) + u[2] * u[2])) - (((d[0] * d[0] + d[1] * d[1]) + d[2] * d[2]) - muDoubleScalarPower(r_idx, 2.0))) / (2.0 * %<SLibCGCallSubFcn(block, 1, 3, 0)> * %<SLibCGCallSubFcn(block, 1, 3, 1)>));
+theta[0] = r_idx_0 - r_idx_1;
+theta[1] = r_idx_0 + r_idx_1;
+/*      check1 = (sol1 >= -45/180*pi) && (sol1 <= 115/180*pi); */
+/*      check2 = (sol2 >= -45/180*pi) && (sol2 <= 115/180*pi); */
+/*       */
+/*      if check1 && check2 */
+/*           */
+/*          if abs(sol1) > abs(sol2) */
+/*              theta = sol2; */
+/*          else */
+/*              theta = sol1; */
+/*          end */
+/*           */
+/*      elseif check1 */
+/*          theta = sol1; */
+/*      elseif check2 */
+/*          theta = sol2; */
+/*      end  */
+/*      Nsol = check1+check2; */
+if(r_idx_1 != 0.0) {
+*Nsol = 2.0;
+} else {
+/*          theta = theta0; */
+*Nsol = 1.0;
+}
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_subPro3_Fcn3Call0Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+up\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro3_Fcn3Call1Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+u\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_any_Fcn4(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+boolean_T y;
+boolean_T b;
+int32_T k;
+boolean_T exitg;
+y = FALSE;
+k = 1;
+exitg = FALSE;
+while(((uint32_T)exitg == 0U) && (k <= 2)) {
+if((int32_T)x[k - 1] == 0) {
+b = TRUE;
+} else {
+b = FALSE;
+}
+if(!b) {
+y = TRUE;
+exitg = TRUE;
+} else {
+k++;
+}
+}
+return y;
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_subPro1_Fcn5(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+real_T y;
+real_T r_idx;
+real_T r_idx_0;
+real_T r_idx_1;
+real_T u_idx;
+real_T up_idx;
+real_T up_idx_0;
+real_T u_idx_0;
+real_T up_idx_1;
+real_T u_idx_1;
+/*  rotation axis */
+r_idx = -(kx[1] * kx[5] - kx[2] * kx[4]);
+r_idx_0 = -(kx[2] * kx[3] - kx[0] * kx[5]);
+r_idx_1 = -(kx[0] * kx[4] - kx[1] * kx[3]);
+u_idx = p[0] - r_idx;
+u_idx_0 = p[1] - r_idx_0;
+u_idx_1 = p[2] - r_idx_1;
+y = (kx[3] * u_idx + kx[4] * u_idx_0) + kx[5] * u_idx_1;
+up_idx_1 = u_idx - kx[3] * y;
+up_idx = u_idx_0 - kx[4] * y;
+up_idx_0 = u_idx_1 - kx[5] * y;
+y = (kx[3] * u_idx + kx[4] * u_idx_0) + kx[5] * u_idx_1;
+u_idx_0 = (q[0] - r_idx) - kx[3] * y;
+u_idx = (q[1] - r_idx_0) - kx[4] * y;
+r_idx = (q[2] - r_idx_1) - kx[5] * y;
+/*      if norm(up) == 0 */
+/*          error('SubPro1: up = 0, Infinite number of solutions!'); */
+/*      end */
+return muDoubleScalarAtan2(((up_idx * r_idx - up_idx_0 * u_idx) * kx[3] + (up_idx_0 * u_idx_0 - up_idx_1 * r_idx) * kx[4]) + (up_idx_1 * u_idx - up_idx * u_idx_0) * kx[5], (up_idx_1 * u_idx_0 + up_idx * u_idx) + up_idx_0 * r_idx);
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_cross_Fcn6(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+c[0] = a[1] * b[2] - a[2] * b[1];
+c[1] = a[2] * b[0] - a[0] * b[2];
+c[2] = a[0] * b[1] - a[1] * b[0];
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_det_Fcn7(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+real_T y;
+boolean_T isodd;
+int32_T jpiv_offset;
+real_T b_x_idx;
+real_T b_x_idx_0;
+real_T b_x_idx_1;
+real_T b_x_idx_2;
+int8_T ipiv_idx;
+b_x_idx_0 = x[0];
+b_x_idx = x[1];
+b_x_idx_1 = x[2];
+b_x_idx_2 = x[3];
+ipiv_idx = 1;
+jpiv_offset = 1;
+if(muDoubleScalarAbs(x[1]) > muDoubleScalarAbs(x[0])) {
+jpiv_offset = 2;
+}
+jpiv_offset--;
+if(x[jpiv_offset] != 0.0) {
+if(jpiv_offset != 0) {
+ipiv_idx = 2;
+b_x_idx_0 = x[1];
+b_x_idx = x[0];
+b_x_idx_1 = x[3];
+b_x_idx_2 = x[2];
+}
+b_x_idx /= b_x_idx_0;
+}
+if(b_x_idx_1 != 0.0) {
+b_x_idx_2 += (-b_x_idx_1) * b_x_idx;
+}
+y = b_x_idx_0 * b_x_idx_2;
+isodd = FALSE;
+if(ipiv_idx > 1) {
+isodd = TRUE;
+}
+if(isodd) {
+return -y;
+}
+return y;
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_findCommon_Fcn8(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+real_T A[4];
+real_T vec[2];
+int32_T b_r;
+int32_T b_r_0;
+real_T a;
+A[0] = w1[0];
+A[2] = -w2[0];
+A[1] = w1[1];
+A[3] = -w2[1];
+vec[0] = r2[0] - r1[0];
+vec[1] = r2[1] - r1[1];
+if(%<SLibCGCallSubFcn(block, 1, 8, 0)> == 0.0) {
+/*  if the first two set of para are parallel */
+A[0] = w1[0];
+A[2] = -w2[0];
+A[1] = w1[2];
+A[3] = -w2[2];
+vec[0] = r2[0] - r1[0];
+vec[1] = r2[2] - r1[2];
+}
+if(%<SLibCGCallSubFcn(block, 1, 8, 1)> == 0.0) {
+A[0] = w1[1];
+A[2] = -w2[1];
+A[1] = w1[2];
+A[3] = -w2[2];
+vec[0] = r2[1] - r1[1];
+vec[1] = r2[2] - r1[2];
+}
+if(muDoubleScalarAbs(A[1]) > muDoubleScalarAbs(A[0])) {
+b_r = 2;
+b_r_0 = 1;
+} else {
+b_r = 1;
+b_r_0 = 2;
+}
+a = A[b_r_0 - 1] / A[b_r - 1];
+a = (vec[b_r - 1] - (vec[b_r_0 - 1] - vec[b_r - 1] * a) / (A[b_r_0 + 1] - A[b_r + 1] * a) * A[b_r + 1]) / A[b_r - 1];
+/*  get the inverse */
+r[0] = w1[0] * a + r1[0];
+r[1] = w1[1] * a + r1[1];
+r[2] = w1[2] * a + r1[2];
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_findCommon_Fcn8Call0Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+A\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_findCommon_Fcn8Call1Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+A\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+real_T r[3];
+real_T alpha;
+real_T beta;
+real_T ySqu;
+real_T y;
+int32_T i;
+real_T tmp[3];
+real_T tmp_0[3];
+real_T tmp_1[3];
+real_T c_idx;
+real_T c_idx_0;
+real_T c_idx_1;
+real_T u_idx;
+real_T u_idx_0;
+real_T u_idx_1;
+real_T v_idx;
+real_T v_idx_0;
+real_T v_idx_1;
+real_T up_idx;
+real_T up_idx_0;
+real_T up_idx_1;
+theta1[0] = 0.0;
+theta2[0] = 0.0;
+theta1[1] = 0.0;
+theta2[1] = 0.0;
+/*  ============================================= %<"\%    "> */
+/*  Twist 2 is the one that rotation happens first */
+/*  ============================================= %<"\%"> */
+/*  rotation axis for twist1 */
+/*  one point in w1 axis */
+/*  rotation axis for twist2 */
+/*  one point in w2 axis */
+/* find the common point of two axis */
+%<SLibCGCallSubFcn(block, 1, 9, 1)>;
+%<SLibCGCallSubFcn(block, 1, 9, 2)>;
+tmp_0[0] = -r[0];
+tmp_1[0] = -tmp[0];
+tmp_0[1] = -r[1];
+tmp_1[1] = -tmp[1];
+tmp_0[2] = -r[2];
+tmp_1[2] = -tmp[2];
+%<SLibCGCallSubFcn(block, 1, 9, 0)>;
+u_idx = p[0] - r[0];
+v_idx = q[0] - r[0];
+u_idx_0 = p[1] - r[1];
+v_idx_0 = q[1] - r[1];
+u_idx_1 = p[2] - r[2];
+v_idx_1 = q[2] - r[2];
+y = (kx1[3] * kx2[3] + kx1[4] * kx2[4]) + kx1[5] * kx2[5];
+alpha = (((y * kx2[3] * u_idx + y * kx2[4] * u_idx_0) + y * kx2[5] * u_idx_1) - ((kx1[3] * v_idx + kx1[4] * v_idx_0) + kx1[5] * v_idx_1)) / (((kx1[3] * kx2[3] + kx1[4] * kx2[4]) + kx1[5] * kx2[5]) * ((kx1[3] * kx2[3] + kx1[4] * kx2[4]) + kx1[5] * kx2[5]) - 1.0);
+y = (kx1[3] * kx2[3] + kx1[4] * kx2[4]) + kx1[5] * kx2[5];
+beta = (((y * kx1[3] * v_idx + y * kx1[4] * v_idx_0) + y * kx1[5] * v_idx_1) - ((kx2[3] * u_idx + kx2[4] * u_idx_0) + kx2[5] * u_idx_1)) / (((kx1[3] * kx2[3] + kx1[4] * kx2[4]) + kx1[5] * kx2[5]) * ((kx1[3] * kx2[3] + kx1[4] * kx2[4]) + kx1[5] * kx2[5]) - 1.0);
+y = 2.0 * beta * alpha;
+ySqu = (((((u_idx * u_idx + u_idx_0 * u_idx_0) + u_idx_1 * u_idx_1) - alpha * alpha) - beta * beta) - ((y * kx1[3] * kx2[3] + y * kx1[4] * kx2[4]) + y * kx1[5] * kx2[5])) / (((kx1[4] * kx2[5] - kx1[5] * kx2[4]) * (kx1[4] * kx2[5] - kx1[5] * kx2[4]) + (kx1[5] * kx2[3] - kx1[3] * kx2[5]) * (kx1[5] * kx2[3] - kx1[3] * kx2[5])) + (kx1[3] * kx2[4] - kx1[4] * kx2[3]) * (kx1[3] * kx2[4] - kx1[4] * kx2[3]));
+if(ySqu > 0.0) {
+*Nsol = 2.0;
+} else if(ySqu == 0.0) {
+*Nsol = 1.0;
+} else {
+*Nsol = 0.0;
+}
+if(ySqu >= 0.0) {
+for(i = 0; i < 2; i++) {
+y = ((real_T)((i + 1) << 1) - 3.0) * muDoubleScalarSqrt(ySqu);
+/*  could have two solutions in this step */
+c_idx = ((alpha * kx1[3] + beta * kx2[3]) - (kx1[4] * kx2[5] - kx1[5] * kx2[4]) * y) + r[0];
+c_idx_0 = ((alpha * kx1[4] + beta * kx2[4]) - (kx1[5] * kx2[3] - kx1[3] * kx2[5]) * y) + r[1];
+c_idx_1 = ((alpha * kx1[5] + beta * kx2[5]) - (kx1[3] * kx2[4] - kx1[4] * kx2[3]) * y) + r[2];
+/*  the common point in the rotation if there are solutions */
+/*  rotation axis */
+v_idx = -(kx2[1] * kx2[5] - kx2[2] * kx2[4]);
+v_idx_0 = -(kx2[2] * kx2[3] - kx2[0] * kx2[5]);
+v_idx_1 = -(kx2[0] * kx2[4] - kx2[1] * kx2[3]);
+u_idx = p[0] - v_idx;
+u_idx_0 = p[1] - v_idx_0;
+u_idx_1 = p[2] - v_idx_1;
+y = (kx2[3] * u_idx + kx2[4] * u_idx_0) + kx2[5] * u_idx_1;
+up_idx_1 = u_idx - kx2[3] * y;
+up_idx = u_idx_0 - kx2[4] * y;
+up_idx_0 = u_idx_1 - kx2[5] * y;
+y = (kx2[3] * u_idx + kx2[4] * u_idx_0) + kx2[5] * u_idx_1;
+v_idx = (c_idx - v_idx) - kx2[3] * y;
+u_idx = (c_idx_0 - v_idx_0) - kx2[4] * y;
+y = (c_idx_1 - v_idx_1) - kx2[5] * y;
+/*      if norm(up) == 0 */
+/*          error('SubPro1: up = 0, Infinite number of solutions!'); */
+/*      end */
+theta2[i] = muDoubleScalarAtan2(((up_idx * y - up_idx_0 * u_idx) * kx2[3] + (up_idx_0 * v_idx - up_idx_1 * y) * kx2[4]) + (up_idx_1 * u_idx - up_idx * v_idx) * kx2[5], (up_idx_1 * v_idx + up_idx * u_idx) + up_idx_0 * y);
+/*  rotation axis */
+v_idx = -(kx1[1] * kx1[5] - kx1[2] * kx1[4]);
+v_idx_0 = -(kx1[2] * kx1[3] - kx1[0] * kx1[5]);
+v_idx_1 = -(kx1[0] * kx1[4] - kx1[1] * kx1[3]);
+u_idx = c_idx - v_idx;
+u_idx_0 = c_idx_0 - v_idx_0;
+u_idx_1 = c_idx_1 - v_idx_1;
+y = (kx1[3] * u_idx + kx1[4] * u_idx_0) + kx1[5] * u_idx_1;
+up_idx_1 = u_idx - kx1[3] * y;
+up_idx = u_idx_0 - kx1[4] * y;
+up_idx_0 = u_idx_1 - kx1[5] * y;
+y = (kx1[3] * u_idx + kx1[4] * u_idx_0) + kx1[5] * u_idx_1;
+v_idx = (q[0] - v_idx) - kx1[3] * y;
+u_idx = (q[1] - v_idx_0) - kx1[4] * y;
+y = (q[2] - v_idx_1) - kx1[5] * y;
+/*      if norm(up) == 0 */
+/*          error('SubPro1: up = 0, Infinite number of solutions!'); */
+/*      end */
+theta1[i] = muDoubleScalarAtan2(((up_idx * y - up_idx_0 * u_idx) * kx1[3] + (up_idx_0 * v_idx - up_idx_1 * y) * kx1[4]) + (up_idx_1 * u_idx - up_idx * v_idx) * kx1[5], (up_idx_1 * v_idx + up_idx * u_idx) + up_idx_0 * y);
+}
+}
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call0Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+*((real_T (*)[3])&kx1[3])\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call0Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+*((real_T (*)[3])&kx2[3])\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call0Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call0Arg3(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_1\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call0Arg4(block) void
+%assign argBuff = ""
+%openfile argBuff
+r\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call1Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+*((real_T (*)[3])&kx1[0])\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call1Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+*((real_T (*)[3])&kx1[3])\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call1Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+r\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call2Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+*((real_T (*)[3])&kx2[0])\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call2Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+*((real_T (*)[3])&kx2[3])\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_subPro2_Fcn9Call2Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call0Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+b_x_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call1Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+b_x\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call2Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call2Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_1\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call2Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+g\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call3Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call3Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+b_q\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call3Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+p_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call4Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call4Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+b_pw\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call4Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+b_q\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call4Arg3(block) void
+%assign argBuff = ""
+%openfile argBuff
+p_1\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call4Arg4(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta_1\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call4Arg5(block) void
+%assign argBuff = ""
+%openfile argBuff
+&Num\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call5Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_1\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call5Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_2\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call5Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+q\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call5Arg3(block) void
+%assign argBuff = ""
+%openfile argBuff
+g_1\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call5Arg4(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta_2\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call5Arg5(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta_3\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call5Arg6(block) void
+%assign argBuff = ""
+%openfile argBuff
+&pw_idx_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call6Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_4\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call6Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta_3[(int32_T)pw_idx - 1]\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call6Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call7Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_5\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call7Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta_2[(int32_T)pw_idx - 1]\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call7Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_1\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call8Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_4\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call8Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta_1[(int32_T)c - 1]\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call8Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call9Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_5\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call9Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call9Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_1\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call10Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_3\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call10Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call10Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call11Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call11Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta_1[(int32_T)c - 1]\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call11Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call12Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_3\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call12Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+theta\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call12Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+tmp_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call13Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+kx_3\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call13Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+b_q_0\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_InverseKinematic_Fcn10Call13Arg2(block) void
+%assign argBuff = ""
+%openfile argBuff
+b_q\
+%closefile argBuff
+%return argBuff
+%endfunction
+

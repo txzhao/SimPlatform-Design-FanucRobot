@@ -1,0 +1,299 @@
+%implements s13_b0_cgugh_1_Outputs "C"
+
+%function Outputs(block, system) Output
+
+%assign localVarDecl = ""
+%openfile localVarDecl
+real_T theta_total[24];
+real_T num_total;
+real_T kx[6];
+real_T kx_0[6];
+real_T kx_1[6];
+real_T kx_2[6];
+real_T kx_3[6];
+real_T g[16];
+real_T p[4];
+real_T theta;
+real_T p_0[4];
+real_T theta_0;
+real_T g_0[16];
+real_T theta_1[2];
+real_T Num;
+real_T theta_2[2];
+real_T theta_3[2];
+real_T b_q[4];
+real_T b_q_0[4];
+real_T q[4];
+real_T b_pw[4];
+real_T c;
+int32_T exitg;
+boolean_T guard;
+boolean_T b_x[2];
+real_T g_1[4];
+real_T kx_4[6];
+real_T kx_5[6];
+real_T tmp[16];
+boolean_T b_x_0[2];
+real_T p_1[4];
+real_T tmp_0[16];
+real_T tmp_1[16];
+int32_T i;
+real_T tmp_2[16];
+int32_T num_total_0;
+real_T q3_idx;
+real_T pw_idx;
+real_T pw_idx_0;
+static real_T tmp_3[6] = { 0.0, 0.0, 0.0, -0.0, -0.0, -1.0 };
+
+%closefile localVarDecl
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+
+%<SLibCG_SetBOV(98, 0, 7, 3, "", -1, "", 0, "%<SLibCGIR_IArg(0, 0, 7, 1, "", -1, "", 0)>")>\
+%<SLibCG_SetBOV(98, 0, 7, 3, "", -1, "", 1, "%<SLibCGIR_IArg(1, 0, 7, 1, "", -1, "", 0)>")>\
+%<SLibCG_SetBOV(98, 0, 7, 3, "", -1, "", 2, "%<SLibCGIR_IArg(2, 0, 7, 1, "", -1, "", 0)>")>\
+
+memset((void *)&theta_total[0], 0, 24U * sizeof(real_T));
+/*  at most 4 pairs of solution */
+num_total = 0.0;
+kx[0] = -%<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 0))>;
+kx[1] = -(0.0 * %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))> - 0.0 * %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 0))>);
+kx[2] = -(0.0 - %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))>);
+q3_idx = %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 0))> + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 2))>;
+kx_0[0] = -q3_idx;
+kx_0[1] = -(0.0 * %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))> - 0.0 * q3_idx);
+kx_0[2] = -(0.0 - %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))>);
+pw_idx = %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))> + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 4))>;
+pw_idx_0 = (%<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 0))> + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 2))>) + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 3))>;
+kx_1[0] = -(0.0 * pw_idx_0);
+kx_1[1] = -(0.0 * pw_idx - pw_idx_0);
+kx_1[2] = -(0.0 - 0.0 * pw_idx);
+kx_2[0] = -pw_idx_0;
+kx_2[1] = -(0.0 * pw_idx - 0.0 * pw_idx_0);
+kx_2[2] = -(0.0 - pw_idx);
+kx_3[0] = -(0.0 * pw_idx_0);
+kx_3[1] = -(0.0 * pw_idx - pw_idx_0);
+kx_3[2] = -(0.0 - 0.0 * pw_idx);
+kx[3] = 0.0;
+kx_0[3] = 0.0;
+kx_1[3] = 1.0;
+kx_2[3] = 0.0;
+kx_3[3] = 1.0;
+b_q[0] = %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))>;
+b_q_0[0] = %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))>;
+b_pw[0] = pw_idx;
+kx[4] = 1.0;
+kx_0[4] = 1.0;
+kx_1[4] = 0.0;
+kx_2[4] = 1.0;
+kx_3[4] = 0.0;
+b_q[1] = 0.0;
+b_q_0[1] = 0.0;
+b_pw[1] = 0.0;
+kx[5] = 0.0;
+kx_0[5] = 0.0;
+kx_1[5] = 0.0;
+kx_2[5] = 0.0;
+kx_3[5] = 0.0;
+b_q[2] = %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 0))>;
+b_q_0[2] = q3_idx;
+b_pw[2] = pw_idx_0;
+b_q[3] = 1.0;
+b_q_0[3] = 1.0;
+q[0] = (%<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))> + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 4))>) + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 5))>;
+q[1] = 0.0;
+q[2] = (%<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 0))> + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 2))>) + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 3))>;
+q[3] = 1.0;
+b_pw[3] = 1.0;
+for(i = 0; i < 3; i++) {
+tmp_0[i << 2] = %<SLibCG_SE(SLibCGIR_PV(117, 0, 7, 9, "", -1, "3 * i", 0))>;
+tmp_0[1 + (i << 2)] = %<SLibCG_SE(SLibCGIR_PV(117, 0, 7, 9, "", -1, "3 * i + 1", 0))>;
+tmp_0[2 + (i << 2)] = %<SLibCG_SE(SLibCGIR_PV(117, 0, 7, 9, "", -1, "3 * i + 2", 0))>;
+}
+tmp_0[12] = %<SLibCG_SE(SLibCG_BOV(98, 0, 7, 3, "", -1, "", 0))>;
+tmp_0[13] = %<SLibCG_SE(SLibCG_BOV(98, 0, 7, 3, "", -1, "", 1))>;
+tmp_0[14] = %<SLibCG_SE(SLibCG_BOV(98, 0, 7, 3, "", -1, "", 2))>;
+tmp_0[3] = 0.0;
+tmp_0[7] = 0.0;
+tmp_0[11] = 0.0;
+tmp_0[15] = 1.0;
+tmp_1[0] = 1.0;
+tmp_1[4] = 0.0;
+tmp_1[8] = 0.0;
+tmp_1[12] = ((%<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 1))> + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 4))>) + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 5))>) + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 6))>;
+tmp_1[1] = 0.0;
+tmp_1[5] = 1.0;
+tmp_1[9] = 0.0;
+tmp_1[13] = %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 7))>;
+tmp_1[2] = 0.0;
+tmp_1[6] = 0.0;
+tmp_1[10] = 1.0;
+tmp_1[14] = ((%<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 0))> + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 2))>) + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 3))>) + %<SLibCG_SE(SLibCGIR_PV(116, 0, 7, 9, "", -1, "", 8))>;
+tmp_1[3] = 0.0;
+tmp_1[7] = 0.0;
+tmp_1[11] = 0.0;
+tmp_1[15] = 1.0;
+%<SLibCGCallSubFcn(block, 1, 10, 2)>;
+/*  gd*inv(gst0) */
+/*  select pw = [L2+L5;0;L1+L3+L4] */
+for(i = 0; i < 4; i++) {
+q3_idx = g[i + 12] + (g[i + 8] * b_pw[2] + (g[i + 4] * 0.0 + g[i] * b_pw[0]));
+p[i] = q3_idx;
+}
+theta = muDoubleScalarAtan2(p[1], p[0]);
+/*  only one solution */
+pw_idx_0 = theta / 3.1415926535897931 * 180.0;
+if((pw_idx_0 >= -165.0) && (pw_idx_0 <= 165.0)) {
+/*  select q2 = [L2;0;L1], subproblem3 */
+%<SLibCGCallSubFcn(block, 1, 10, 12)>;
+for(i = 0; i < 4; i++) {
+q3_idx = tmp_0[i + 12] * p[3] + (tmp_0[i + 8] * p[2] + (tmp_0[i + 4] * p[1] + tmp_0[i] * p[0]));
+p_1[i] = q3_idx - b_q[i];
+p_0[i] = q3_idx;
+}
+%<SLibCGCallSubFcn(block, 1, 10, 4)>;
+/*  at most 2 solutions */
+q3_idx = theta_1[0] / 3.1415926535897931 * 180.0;
+b_x_0[0] = (((q3_idx >= -210.0) && (q3_idx <= 90.0)) == 1);
+q3_idx = theta_1[1] / 3.1415926535897931 * 180.0;
+b_x_0[1] = (((q3_idx >= -210.0) && (q3_idx <= 90.0)) == 1);
+if(%<SLibCGCallSubFcn(block, 1, 10, 0)>) {
+/*   */
+c = 1.0;
+do {
+exitg = 0;
+if(c <= Num) {
+pw_idx_0 = theta_1[(int32_T)c - 1] / 3.1415926535897931 * 180.0;
+guard = FALSE;
+if(((pw_idx_0 >= -210.0) && (pw_idx_0 <= 90.0)) == 1) {
+%<SLibCGCallSubFcn(block, 1, 10, 11)>;
+for(i = 0; i < 4; i++) {
+q3_idx = tmp_0[i + 12] + (tmp_0[i + 8] * b_pw[2] + (tmp_0[i + 4] * 0.0 + tmp_0[i] * b_pw[0]));
+b_q[i] = q3_idx;
+}
+theta_0 = %<SLibCGCallSubFcn(block, 1, 10, 3)>;
+/*  only one solution */
+pw_idx_0 = theta_0 / 3.1415926535897931 * 180.0;
+if(((pw_idx_0 >= -150.0) && (pw_idx_0 <= 60.0)) == 0) {
+/* disp('Cannot find appropriate theta_2'); */
+exitg = 1;
+} else {
+for(i = 0; i < 6; i++) {
+kx_4[i] = -kx_0[i];
+kx_5[i] = -kx[i];
+}
+%<SLibCGCallSubFcn(block, 1, 10, 8)>;
+%<SLibCGCallSubFcn(block, 1, 10, 9)>;
+%<SLibCGCallSubFcn(block, 1, 10, 10)>;
+for(i = 0; i < 4; i++) {
+for(num_total_0 = 0; num_total_0 < 4; num_total_0++) {
+tmp_2[i + (num_total_0 << 2)] = 0.0;
+tmp_2[i + (num_total_0 << 2)] = tmp_2[(num_total_0 << 2) + i] + tmp_1[num_total_0 << 2] * tmp_0[i];
+tmp_2[i + (num_total_0 << 2)] = tmp_1[(num_total_0 << 2) + 1] * tmp_0[i + 4] + tmp_2[(num_total_0 << 2) + i];
+tmp_2[i + (num_total_0 << 2)] = tmp_1[(num_total_0 << 2) + 2] * tmp_0[i + 8] + tmp_2[(num_total_0 << 2) + i];
+tmp_2[i + (num_total_0 << 2)] = tmp_1[(num_total_0 << 2) + 3] * tmp_0[i + 12] + tmp_2[(num_total_0 << 2) + i];
+}
+}
+for(i = 0; i < 4; i++) {
+for(num_total_0 = 0; num_total_0 < 4; num_total_0++) {
+tmp_0[i + (num_total_0 << 2)] = 0.0;
+tmp_0[i + (num_total_0 << 2)] = tmp_0[(num_total_0 << 2) + i] + tmp[num_total_0 << 2] * tmp_2[i];
+tmp_0[i + (num_total_0 << 2)] = tmp[(num_total_0 << 2) + 1] * tmp_2[i + 4] + tmp_0[(num_total_0 << 2) + i];
+tmp_0[i + (num_total_0 << 2)] = tmp[(num_total_0 << 2) + 2] * tmp_2[i + 8] + tmp_0[(num_total_0 << 2) + i];
+tmp_0[i + (num_total_0 << 2)] = tmp[(num_total_0 << 2) + 3] * tmp_2[i + 12] + tmp_0[(num_total_0 << 2) + i];
+}
+}
+for(i = 0; i < 4; i++) {
+for(num_total_0 = 0; num_total_0 < 4; num_total_0++) {
+g_0[i + (num_total_0 << 2)] = 0.0;
+g_0[i + (num_total_0 << 2)] = g_0[(num_total_0 << 2) + i] + g[num_total_0 << 2] * tmp_0[i];
+g_0[i + (num_total_0 << 2)] = g[(num_total_0 << 2) + 1] * tmp_0[i + 4] + g_0[(num_total_0 << 2) + i];
+g_0[i + (num_total_0 << 2)] = g[(num_total_0 << 2) + 2] * tmp_0[i + 8] + g_0[(num_total_0 << 2) + i];
+g_0[i + (num_total_0 << 2)] = g[(num_total_0 << 2) + 3] * tmp_0[i + 12] + g_0[(num_total_0 << 2) + i];
+}
+}
+/* select q7 */
+for(i = 0; i < 4; i++) {
+q3_idx = g_0[i + 12] + (g_0[i + 8] * q[2] + (g_0[i + 4] * 0.0 + g_0[i] * q[0]));
+g_1[i] = q3_idx;
+}
+%<SLibCGCallSubFcn(block, 1, 10, 5)>;
+/*  at most 2 pairs of solution */
+q3_idx = theta_3[0] / 3.1415926535897931 * 180.0;
+b_x[0] = (((q3_idx >= -140.0) && (q3_idx <= 140.0)) == 1);
+q3_idx = theta_3[1] / 3.1415926535897931 * 180.0;
+b_x[1] = (((q3_idx >= -140.0) && (q3_idx <= 140.0)) == 1);
+if((int32_T)%<SLibCGCallSubFcn(block, 1, 10, 1)> == 0) {
+/* disp('Cannot find appropriate theta_5'); */
+exitg = 1;
+} else {
+for(pw_idx = 1.0; pw_idx <= pw_idx_0; pw_idx++) {
+q3_idx = theta_3[(int32_T)pw_idx - 1] / 3.1415926535897931 * 180.0;
+if(((q3_idx >= -140.0) && (q3_idx <= 140.0)) == 1) {
+/* selcet q3 */
+/*  only one solution */
+num_total++;
+for(i = 0; i < 6; i++) {
+kx_4[i] = -kx_2[i];
+kx_5[i] = -kx_1[i];
+}
+%<SLibCGCallSubFcn(block, 1, 10, 6)>;
+%<SLibCGCallSubFcn(block, 1, 10, 7)>;
+for(i = 0; i < 4; i++) {
+for(num_total_0 = 0; num_total_0 < 4; num_total_0++) {
+tmp[i + (num_total_0 << 2)] = 0.0;
+tmp[i + (num_total_0 << 2)] = tmp[(num_total_0 << 2) + i] + tmp_1[num_total_0 << 2] * tmp_0[i];
+tmp[i + (num_total_0 << 2)] = tmp_1[(num_total_0 << 2) + 1] * tmp_0[i + 4] + tmp[(num_total_0 << 2) + i];
+tmp[i + (num_total_0 << 2)] = tmp_1[(num_total_0 << 2) + 2] * tmp_0[i + 8] + tmp[(num_total_0 << 2) + i];
+tmp[i + (num_total_0 << 2)] = tmp_1[(num_total_0 << 2) + 3] * tmp_0[i + 12] + tmp[(num_total_0 << 2) + i];
+}
+}
+for(i = 0; i < 4; i++) {
+for(num_total_0 = 0; num_total_0 < 4; num_total_0++) {
+tmp_0[i + (num_total_0 << 2)] = 0.0;
+tmp_0[i + (num_total_0 << 2)] = tmp_0[(num_total_0 << 2) + i] + g_0[num_total_0 << 2] * tmp[i];
+tmp_0[i + (num_total_0 << 2)] = g_0[(num_total_0 << 2) + 1] * tmp[i + 4] + tmp_0[(num_total_0 << 2) + i];
+tmp_0[i + (num_total_0 << 2)] = g_0[(num_total_0 << 2) + 2] * tmp[i + 8] + tmp_0[(num_total_0 << 2) + i];
+tmp_0[i + (num_total_0 << 2)] = g_0[(num_total_0 << 2) + 3] * tmp[i + 12] + tmp_0[(num_total_0 << 2) + i];
+}
+}
+for(i = 0; i < 4; i++) {
+q3_idx = tmp_0[i + 12] + (tmp_0[i + 8] * b_q_0[2] + (tmp_0[i + 4] * 0.0 + tmp_0[i] * b_q_0[0]));
+b_q[i] = q3_idx;
+}
+num_total_0 = (int32_T)num_total - 1;
+kx_4[0] = theta;
+kx_4[1] = theta_0;
+kx_4[2] = theta_1[(int32_T)c - 1];
+kx_4[3] = theta_2[(int32_T)pw_idx - 1];
+kx_4[4] = theta_3[(int32_T)pw_idx - 1];
+kx_4[5] = %<SLibCGCallSubFcn(block, 1, 10, 13)>;
+for(i = 0; i < 6; i++) {
+theta_total[i + 6 * num_total_0] = kx_4[i];
+}
+}
+}
+guard = TRUE;
+}
+}
+} else {
+guard = TRUE;
+}
+if(guard) {
+c++;
+}
+} else {
+/*  check range */
+/* disp(theta*180/pi);   */
+exitg = 1;
+}
+} while((uint32_T)exitg == 0U);
+} else {
+/* disp('Cannot find appropriate theta_3'); */
+}
+} else {
+/* disp('Cannot find appropriate theta_1'); */
+}
+for(i = 0; i < 6; i++) {
+%<SLibCG_SetBOV(99, 0, 7, 6, "", -1, "i", 0, "theta_total[6 + i]")>\
+}
+%endfunction

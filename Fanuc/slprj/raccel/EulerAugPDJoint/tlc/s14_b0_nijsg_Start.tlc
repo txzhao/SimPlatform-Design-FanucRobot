@@ -1,0 +1,209 @@
+%implements s14_b0_nijsg_Start "C"
+
+%function Start(block, system) Output
+%assign tlcStartFcnOfS12B0 = OpaqueTLCBlockFcn("Start", 12, 0)
+%assign tlcStartFcnOfS12B2 = OpaqueTLCBlockFcn("Start", 12, 2)
+%assign tlcStartFcnOfS12B3 = OpaqueTLCBlockFcn("Start", 12, 3)
+%assign tlcStartFcnOfS12B6 = OpaqueTLCBlockFcn("Start", 12, 6)
+%assign tlcStartFcnOfS12B9 = OpaqueTLCBlockFcn("Start", 12, 9)
+%assign tlcStartFcnOfS12B10 = OpaqueTLCBlockFcn("Start", 12, 10)
+%assign tlcStartFcnOfS12B11 = OpaqueTLCBlockFcn("Start", 12, 11)
+%assign tlcStartFcnOfS12B12 = OpaqueTLCBlockFcn("Start", 12, 12)
+%assign tlcStartFcnOfS12B13 = OpaqueTLCBlockFcn("Start", 12, 13)
+%assign tlcStartFcnOfS12B14 = OpaqueTLCBlockFcn("Start", 12, 14)
+%assign tlcStartFcnOfS12B17 = OpaqueTLCBlockFcn("Start", 12, 17)
+%assign tlcStartFcnOfS12B18 = OpaqueTLCBlockFcn("Start", 12, 18)
+%assign tlcStartFcnOfS12B19 = OpaqueTLCBlockFcn("Start", 12, 19)
+%assign tlcStartFcnOfS12B20 = OpaqueTLCBlockFcn("Start", 12, 20)
+%assign tlcStartFcnOfS12B22 = OpaqueTLCBlockFcn("Start", 12, 22)
+%assign tlcStartFcnOfS12B23 = OpaqueTLCBlockFcn("Start", 12, 23)
+%assign tlcStartFcnOfS12B26 = OpaqueTLCBlockFcn("Start", 12, 26)
+%assign tlcStartFcnOfS12B29 = OpaqueTLCBlockFcn("Start", 12, 29)
+%assign tlcStartFcnOfS12B31 = OpaqueTLCBlockFcn("Start", 12, 31)
+%assign tlcStartFcnOfS12B34 = OpaqueTLCBlockFcn("Start", 12, 34)
+%assign tlcStartFcnOfS12B35 = OpaqueTLCBlockFcn("Start", 12, 35)
+%assign tlcStartFcnOfS12B36 = OpaqueTLCBlockFcn("Start", 12, 36)
+%assign tlcStartFcnOfS12B38 = OpaqueTLCBlockFcn("Start", 12, 38)
+%assign tlcStartFcnOfS12B39 = OpaqueTLCBlockFcn("Start", 12, 39)
+%assign tlcStartFcnOfS12B40 = OpaqueTLCBlockFcn("Start", 12, 40)
+%assign tlcStartFcnOfS12B41 = OpaqueTLCBlockFcn("Start", 12, 41)
+%assign tlcStartFcnOfS12B43 = OpaqueTLCBlockFcn("Start", 12, 43)
+%assign tlcStartFcnOfS12B44 = OpaqueTLCBlockFcn("Start", 12, 44)
+%assign tlcStartFcnOfS12B45 = OpaqueTLCBlockFcn("Start", 12, 45)
+%assign tlcStartFcnOfS12B46 = OpaqueTLCBlockFcn("Start", 12, 46)
+%assign tlcStartFcnOfS12B47 = OpaqueTLCBlockFcn("Start", 12, 47)
+%assign tlcStartFcnOfS12B48 = OpaqueTLCBlockFcn("Start", 12, 48)
+%assign tlcStartFcnOfS12B49 = OpaqueTLCBlockFcn("Start", 12, 49)
+%assign tlcStartFcnOfS12B50 = OpaqueTLCBlockFcn("Start", 12, 50)
+%assign tlcStartFcnOfS12B51 = OpaqueTLCBlockFcn("Start", 12, 51)
+%assign tlcStartFcnOfS12B52 = OpaqueTLCBlockFcn("Start", 12, 52)
+%assign tlcStartFcnOfS12B53 = OpaqueTLCBlockFcn("Start", 12, 53)
+%assign tlcStartFcnOfS12B54 = OpaqueTLCBlockFcn("Start", 12, 54)
+%assign tlcStartFcnOfS12B55 = OpaqueTLCBlockFcn("Start", 12, 55)
+%assign tlcStartFcnOfS12B56 = OpaqueTLCBlockFcn("Start", 12, 56)
+%assign tlcStartFcnOfS12B57 = OpaqueTLCBlockFcn("Start", 12, 57)
+%assign tlcStartFcnOfS12B58 = OpaqueTLCBlockFcn("Start", 12, 58)
+%assign tlcStartFcnOfS12B59 = OpaqueTLCBlockFcn("Start", 12, 59)
+%assign tlcStartFcnOfS12B61 = OpaqueTLCBlockFcn("Start", 12, 61)
+%assign tlcStartFcnOfS12B62 = OpaqueTLCBlockFcn("Start", 12, 62)
+%assign tlcStartFcnOfS12B63 = OpaqueTLCBlockFcn("Start", 12, 63)
+%assign tlcStartFcnOfS12B64 = OpaqueTLCBlockFcn("Start", 12, 64)
+%assign tlcStartFcnOfS12B65 = OpaqueTLCBlockFcn("Start", 12, 65)
+%assign tlcStartFcnOfS12B66 = OpaqueTLCBlockFcn("Start", 12, 66)
+%assign tlcStartFcnOfS12B67 = OpaqueTLCBlockFcn("Start", 12, 67)
+%assign tlcStartFcnOfS12B68 = OpaqueTLCBlockFcn("Start", 12, 68)
+%assign tlcStartFcnOfS12B69 = OpaqueTLCBlockFcn("Start", 12, 69)
+%assign tlcStartFcnOfS12B71 = OpaqueTLCBlockFcn("Start", 12, 71)
+%assign tlcStartFcnOfS12B72 = OpaqueTLCBlockFcn("Start", 12, 72)
+%assign tlcStartFcnOfS12B73 = OpaqueTLCBlockFcn("Start", 12, 73)
+%assign tlcStartFcnOfS12B75 = OpaqueTLCBlockFcn("Start", 12, 75)
+%assign tlcStartFcnOfS12B76 = OpaqueTLCBlockFcn("Start", 12, 76)
+%assign tlcStartFcnOfS12B77 = OpaqueTLCBlockFcn("Start", 12, 77)
+%assign tlcStartFcnOfS12B91 = OpaqueTLCBlockFcn("Start", 12, 91)
+%assign tlcStartFcnOfS12B115 = OpaqueTLCBlockFcn("Start", 12, 115)
+%assign tlcStartFcnOfS12B116 = OpaqueTLCBlockFcn("Start", 12, 116)
+%assign tlcStartFcnOfS12B119 = OpaqueTLCBlockFcn("Start", 12, 119)
+%assign tlcStartFcnOfS12B120 = OpaqueTLCBlockFcn("Start", 12, 120)
+%assign tlcStartFcnOfS12B121 = OpaqueTLCBlockFcn("Start", 12, 121)
+%assign tlcStartFcnOfS12B122 = OpaqueTLCBlockFcn("Start", 12, 122)
+%assign tlcStartFcnOfS12B123 = OpaqueTLCBlockFcn("Start", 12, 123)
+%assign tlcStartFcnOfS12B124 = OpaqueTLCBlockFcn("Start", 12, 124)
+
+%<tlcStartFcnOfS12B0>\
+
+%<tlcStartFcnOfS12B2>\
+
+%<tlcStartFcnOfS12B3>\
+
+%<tlcStartFcnOfS12B6>\
+
+%<tlcStartFcnOfS12B9>\
+
+%<tlcStartFcnOfS12B10>\
+
+%<tlcStartFcnOfS12B11>\
+
+%<tlcStartFcnOfS12B12>\
+
+%<tlcStartFcnOfS12B13>\
+
+%<tlcStartFcnOfS12B14>\
+
+%<tlcStartFcnOfS12B17>\
+
+%<tlcStartFcnOfS12B18>\
+
+%<tlcStartFcnOfS12B19>\
+
+%<tlcStartFcnOfS12B20>\
+
+%<tlcStartFcnOfS12B22>\
+
+%<tlcStartFcnOfS12B23>\
+
+%<tlcStartFcnOfS12B26>\
+
+%<tlcStartFcnOfS12B29>\
+
+%<tlcStartFcnOfS12B31>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[3], "Start",0)
+
+EulerAugPDJoint_Synthesized_Atomic_Subsystem_For_Alg_Loop_1_Start();
+
+%endif
+%<tlcStartFcnOfS12B34>\
+
+%<tlcStartFcnOfS12B35>\
+
+%<tlcStartFcnOfS12B36>\
+
+%<tlcStartFcnOfS12B38>\
+
+%<tlcStartFcnOfS12B39>\
+
+%<tlcStartFcnOfS12B40>\
+
+%<tlcStartFcnOfS12B41>\
+
+%<tlcStartFcnOfS12B43>\
+
+%<tlcStartFcnOfS12B44>\
+
+%<tlcStartFcnOfS12B45>\
+
+%<tlcStartFcnOfS12B46>\
+
+%<tlcStartFcnOfS12B47>\
+
+%<tlcStartFcnOfS12B48>\
+
+%<tlcStartFcnOfS12B49>\
+
+%<tlcStartFcnOfS12B50>\
+
+%<tlcStartFcnOfS12B51>\
+
+%<tlcStartFcnOfS12B52>\
+
+%<tlcStartFcnOfS12B53>\
+
+%<tlcStartFcnOfS12B54>\
+
+%<tlcStartFcnOfS12B55>\
+
+%<tlcStartFcnOfS12B56>\
+
+%<tlcStartFcnOfS12B57>\
+
+%<tlcStartFcnOfS12B58>\
+
+%<tlcStartFcnOfS12B59>\
+
+%<tlcStartFcnOfS12B61>\
+
+%<tlcStartFcnOfS12B62>\
+
+%<tlcStartFcnOfS12B63>\
+
+%<tlcStartFcnOfS12B64>\
+
+%<tlcStartFcnOfS12B65>\
+
+%<tlcStartFcnOfS12B66>\
+
+%<tlcStartFcnOfS12B67>\
+
+%<tlcStartFcnOfS12B68>\
+
+%<tlcStartFcnOfS12B69>\
+
+%<tlcStartFcnOfS12B71>\
+
+%<tlcStartFcnOfS12B72>\
+
+%<tlcStartFcnOfS12B73>\
+
+%<tlcStartFcnOfS12B75>\
+
+%<tlcStartFcnOfS12B76>\
+
+%<tlcStartFcnOfS12B77>\
+
+%<tlcStartFcnOfS12B91>\
+
+%<tlcStartFcnOfS12B115>\
+
+%<tlcStartFcnOfS12B116>\
+
+%<tlcStartFcnOfS12B119>\
+
+%<tlcStartFcnOfS12B120>\
+
+%<tlcStartFcnOfS12B121>\
+
+%<tlcStartFcnOfS12B122>\
+
+%<tlcStartFcnOfS12B123>\
+
+%<tlcStartFcnOfS12B124>\
+%endfunction

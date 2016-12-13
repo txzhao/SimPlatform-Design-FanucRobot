@@ -1,0 +1,58 @@
+%implements s14_b0_nijsg_Derivatives "C"
+
+%function Derivatives(block, system) Output
+%assign tlcDerivativesFcnOfS12B9 = OpaqueTLCBlockFcn("Derivatives", 12, 9)
+%assign tlcDerivativesFcnOfS12B10 = OpaqueTLCBlockFcn("Derivatives", 12, 10)
+%assign tlcDerivativesFcnOfS12B11 = OpaqueTLCBlockFcn("Derivatives", 12, 11)
+%assign tlcDerivativesFcnOfS12B12 = OpaqueTLCBlockFcn("Derivatives", 12, 12)
+%assign tlcDerivativesFcnOfS12B13 = OpaqueTLCBlockFcn("Derivatives", 12, 13)
+%assign tlcDerivativesFcnOfS12B14 = OpaqueTLCBlockFcn("Derivatives", 12, 14)
+%assign tlcDerivativesFcnOfS12B17 = OpaqueTLCBlockFcn("Derivatives", 12, 17)
+%assign tlcDerivativesFcnOfS12B18 = OpaqueTLCBlockFcn("Derivatives", 12, 18)
+%assign tlcDerivativesFcnOfS12B19 = OpaqueTLCBlockFcn("Derivatives", 12, 19)
+%assign tlcDerivativesFcnOfS12B20 = OpaqueTLCBlockFcn("Derivatives", 12, 20)
+%assign tlcDerivativesFcnOfS12B91 = OpaqueTLCBlockFcn("Derivatives", 12, 91)
+%assign tlcDerivativesFcnOfS12B115 = OpaqueTLCBlockFcn("Derivatives", 12, 115)
+%assign tlcDerivativesFcnOfS12B119 = OpaqueTLCBlockFcn("Derivatives", 12, 119)
+%assign tlcDerivativesFcnOfS12B120 = OpaqueTLCBlockFcn("Derivatives", 12, 120)
+%assign tlcDerivativesFcnOfS12B121 = OpaqueTLCBlockFcn("Derivatives", 12, 121)
+%assign tlcDerivativesFcnOfS12B122 = OpaqueTLCBlockFcn("Derivatives", 12, 122)
+%assign tlcDerivativesFcnOfS12B123 = OpaqueTLCBlockFcn("Derivatives", 12, 123)
+%assign tlcDerivativesFcnOfS12B124 = OpaqueTLCBlockFcn("Derivatives", 12, 124)
+
+%<tlcDerivativesFcnOfS12B9>\
+
+%<tlcDerivativesFcnOfS12B10>\
+
+%<tlcDerivativesFcnOfS12B11>\
+
+%<tlcDerivativesFcnOfS12B12>\
+
+%<tlcDerivativesFcnOfS12B13>\
+
+%<tlcDerivativesFcnOfS12B14>\
+
+%<tlcDerivativesFcnOfS12B17>\
+
+%<tlcDerivativesFcnOfS12B18>\
+
+%<tlcDerivativesFcnOfS12B19>\
+
+%<tlcDerivativesFcnOfS12B20>\
+
+%<tlcDerivativesFcnOfS12B91>\
+
+%<tlcDerivativesFcnOfS12B115>\
+
+%<tlcDerivativesFcnOfS12B119>\
+
+%<tlcDerivativesFcnOfS12B120>\
+
+%<tlcDerivativesFcnOfS12B121>\
+
+%<tlcDerivativesFcnOfS12B122>\
+
+%<tlcDerivativesFcnOfS12B123>\
+
+%<tlcDerivativesFcnOfS12B124>\
+%endfunction

@@ -1,0 +1,7 @@
+%implements s13_b0_cgugh_0_Start "C"
+
+%function Start(block, system) Output
+%assign tlcStartFcnOfS6B0 = OpaqueTLCBlockFcn("Start", 6, 0)
+
+%<tlcStartFcnOfS6B0>\
+%endfunction

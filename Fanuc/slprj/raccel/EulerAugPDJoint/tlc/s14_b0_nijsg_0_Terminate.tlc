@@ -1,0 +1,7 @@
+%implements s14_b0_nijsg_0_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign tlcTerminateFcnOfS3B0 = OpaqueTLCBlockFcn("Terminate", 3, 0)
+
+%<tlcTerminateFcnOfS3B0>\
+%endfunction

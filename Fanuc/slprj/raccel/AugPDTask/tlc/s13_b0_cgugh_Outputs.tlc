@@ -1,0 +1,365 @@
+%implements s13_b0_cgugh_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalVar(17, 0)> %% rtb_Step
+%<SLibCGIRAccessLocalVar(11, 0)> %% rtb_Derivative
+%<SLibCGIRAccessLocalVar(16, 0)> %% rtb_Derivative3
+%<SLibCGIRAccessLocalVar(18, 0)> %% rtb_Clock
+
+%assign localVarDecl = ""
+%openfile localVarDecl
+real_T currentTime;
+real_T rtb_Output;
+real_T rtb_End_Vy;
+
+%closefile localVarDecl
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%assign tlcOutputsFcnOfS11B0 = OpaqueTLCBlockFcn("Outputs", 11, 0)
+%assign tlcOutputsFcnOfS11B2 = OpaqueTLCBlockFcn("Outputs", 11, 2)
+%assign tlcOutputsFcnOfS11B3 = OpaqueTLCBlockFcn("Outputs", 11, 3)
+%assign tlcOutputsFcnOfS11B6 = OpaqueTLCBlockFcn("Outputs", 11, 6)
+%assign tlcOutputsFcnOfS11B11 = OpaqueTLCBlockFcn("Outputs", 11, 11)
+%assign tlcOutputsFcnOfS11B12 = OpaqueTLCBlockFcn("Outputs", 11, 12)
+%assign tlcOutputsFcnOfS11B14 = OpaqueTLCBlockFcn("Outputs", 11, 14)
+%assign tlcOutputsFcnOfS11B15 = OpaqueTLCBlockFcn("Outputs", 11, 15)
+%assign tlcOutputsFcnOfS11B19 = OpaqueTLCBlockFcn("Outputs", 11, 19)
+%assign tlcOutputsFcnOfS11B20 = OpaqueTLCBlockFcn("Outputs", 11, 20)
+%assign tlcOutputsFcnOfS11B21 = OpaqueTLCBlockFcn("Outputs", 11, 21)
+%assign tlcOutputsFcnOfS11B32 = OpaqueTLCBlockFcn("Outputs", 11, 32)
+%assign tlcOutputsFcnOfS11B33 = OpaqueTLCBlockFcn("Outputs", 11, 33)
+%assign tlcOutputsFcnOfS11B34 = OpaqueTLCBlockFcn("Outputs", 11, 34)
+%assign tlcOutputsFcnOfS11B35 = OpaqueTLCBlockFcn("Outputs", 11, 35)
+%assign tlcOutputsFcnOfS11B36 = OpaqueTLCBlockFcn("Outputs", 11, 36)
+%assign tlcOutputsFcnOfS11B37 = OpaqueTLCBlockFcn("Outputs", 11, 37)
+%assign tlcOutputsFcnOfS11B38 = OpaqueTLCBlockFcn("Outputs", 11, 38)
+%assign tlcOutputsFcnOfS11B39 = OpaqueTLCBlockFcn("Outputs", 11, 39)
+%assign tlcOutputsFcnOfS11B40 = OpaqueTLCBlockFcn("Outputs", 11, 40)
+%assign tlcOutputsFcnOfS11B41 = OpaqueTLCBlockFcn("Outputs", 11, 41)
+%assign tlcOutputsFcnOfS11B42 = OpaqueTLCBlockFcn("Outputs", 11, 42)
+%assign tlcOutputsFcnOfS11B43 = OpaqueTLCBlockFcn("Outputs", 11, 43)
+%assign tlcOutputsFcnOfS11B44 = OpaqueTLCBlockFcn("Outputs", 11, 44)
+%assign tlcOutputsFcnOfS11B45 = OpaqueTLCBlockFcn("Outputs", 11, 45)
+%assign tlcOutputsFcnOfS11B46 = OpaqueTLCBlockFcn("Outputs", 11, 46)
+%assign tlcOutputsFcnOfS11B47 = OpaqueTLCBlockFcn("Outputs", 11, 47)
+%assign tlcOutputsFcnOfS11B48 = OpaqueTLCBlockFcn("Outputs", 11, 48)
+%assign tlcOutputsFcnOfS11B49 = OpaqueTLCBlockFcn("Outputs", 11, 49)
+%assign tlcOutputsFcnOfS11B50 = OpaqueTLCBlockFcn("Outputs", 11, 50)
+%assign tlcOutputsFcnOfS11B51 = OpaqueTLCBlockFcn("Outputs", 11, 51)
+%assign tlcOutputsFcnOfS11B52 = OpaqueTLCBlockFcn("Outputs", 11, 52)
+%assign tlcOutputsFcnOfS11B54 = OpaqueTLCBlockFcn("Outputs", 11, 54)
+%assign tlcOutputsFcnOfS11B55 = OpaqueTLCBlockFcn("Outputs", 11, 55)
+%assign tlcOutputsFcnOfS11B56 = OpaqueTLCBlockFcn("Outputs", 11, 56)
+%assign tlcOutputsFcnOfS11B57 = OpaqueTLCBlockFcn("Outputs", 11, 57)
+%assign tlcOutputsFcnOfS11B71 = OpaqueTLCBlockFcn("Outputs", 11, 71)
+%assign tlcOutputsFcnOfS11B95 = OpaqueTLCBlockFcn("Outputs", 11, 95)
+
+%<SLibCG_SetBOV(0, 0, 11, 1, "", -1, "", 0, "muDoubleScalarSin(%<SLibCG_SE(SLibCGIR_PV(30, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(LibGetTaskTime(0))> + %<SLibCG_SE(SLibCGIR_PV(31, 0, 11, 1, "", -1, "", 0))>) * %<SLibCG_SE(SLibCGIR_PV(28, 0, 11, 1, "", -1, "", 0))> + %<SLibCG_SE(SLibCGIR_PV(29, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<tlcOutputsFcnOfS11B0>\
+
+rtb_End_Vy = muDoubleScalarSin(%<SLibCG_SE(SLibCGIR_PV(37, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(LibGetTaskTime(0))> + %<SLibCG_SE(SLibCGIR_PV(38, 0, 11, 1, "", -1, "", 0))>) * %<SLibCG_SE(SLibCGIR_PV(35, 0, 11, 1, "", -1, "", 0))> + %<SLibCG_SE(SLibCGIR_PV(36, 0, 11, 1, "", -1, "", 0))>;
+
+%<tlcOutputsFcnOfS11B2>\
+
+currentTime = %<SLibCG_SE(LibGetTaskTime(0))>;
+if(currentTime < %<SLibCG_SE(SLibCGIR_PV(41, 0, 11, 1, "", -1, "", 0))>) {
+rtb_Step = %<SLibCG_SE(SLibCGIR_PV(42, 0, 11, 1, "", -1, "", 0))>;
+} else {
+rtb_Step = %<SLibCG_SE(SLibCGIR_PV(43, 0, 11, 1, "", -1, "", 0))>;
+}
+
+%<tlcOutputsFcnOfS11B3>\
+
+rtb_Output = (rtb_Clock - %<SLibCG_SE(SLibCGIR_PV(44, 0, 11, 1, "", -1, "", 0))>) * rtb_Step + %<SLibCG_SE(SLibCGIR_PV(45, 0, 11, 1, "", -1, "", 0))>;
+
+currentTime = %<SLibCG_SE(LibGetTaskTime(0))>;
+if(currentTime < %<SLibCG_SE(SLibCGIR_PV(46, 0, 11, 1, "", -1, "", 0))>) {
+rtb_Clock = %<SLibCG_SE(SLibCGIR_PV(47, 0, 11, 1, "", -1, "", 0))>;
+} else {
+rtb_Clock = %<SLibCG_SE(SLibCGIR_PV(48, 0, 11, 1, "", -1, "", 0))>;
+}
+
+%<tlcOutputsFcnOfS11B6>\
+
+%<SLibCG_SetBOV(2, 0, 11, 1, "", -1, "", 0, "((((rtb_Step - %<SLibCG_SE(SLibCGIR_PV(49, 0, 11, 1, "", -1, "", 0))>) * rtb_Clock + %<SLibCG_SE(SLibCGIR_PV(50, 0, 11, 1, "", -1, "", 0))>) + rtb_Output) + rtb_Derivative3) * %<SLibCG_SE(SLibCGIR_PV(51, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<SLibCG_SetBOV(3, 0, 11, 1, "", -1, "", 0, "rtb_End_Vy + %<SLibCG_SE(SLibCGIR_PV(34, 0, 11, 1, "", -1, "", 0))>")>\
+if(%<LibIsSampleHit(1)>) {
+
+%<SLibCG_SetBOV(4, 0, 11, 1, "", -1, "", 0, "%<SLibCGIR_PV(52, 0, 11, 1, "", -1, "", 0)>")>\
+}
+
+%<SLibCG_SetBOV(5, 0, 11, 1, "", -1, "", 0, "%<SLibCG_CS(0, 0, 11, 1, -1, "", 0)>")>\
+
+%<SLibCG_SetBOV(6, 0, 11, 1, "", -1, "", 0, "%<SLibCG_CS(1, 0, 11, 1, -1, "", 0)>")>\
+
+%<SLibCG_SetBOV(7, 0, 11, 1, "", -1, "", 0, "%<SLibCG_CS(2, 0, 11, 1, -1, "", 0)>")>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(7, 0, 3, 0, 3, 11)>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(8, 0, 3, 0, 3, 11)>\
+if(%<LibIsSampleHit(1)>) {
+
+%<tlcOutputsFcnOfS11B11>\
+
+%<tlcOutputsFcnOfS11B12>\
+
+%<tlcOutputsFcnOfS11B14>\
+}
+
+%<tlcOutputsFcnOfS11B15>\
+
+%<SLibCG_SetBOV(11, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(57, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 19))>")>\
+
+%<SLibCG_SetBOV(12, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(58, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 20))>")>\
+
+%<SLibCG_SetBOV(13, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(59, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 17))>")>\
+
+%<SLibCG_SetBOV(14, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(60, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 18))>")>\
+
+%<SLibCG_SetBOV(15, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(61, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 15))>")>\
+
+%<SLibCG_SetBOV(16, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(62, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 16))>")>\
+
+%<SLibCG_SetBOV(17, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(63, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 13))>")>\
+
+%<SLibCG_SetBOV(18, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(64, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 14))>")>\
+
+%<SLibCG_SetBOV(19, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(65, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 11))>")>\
+
+%<SLibCG_SetBOV(20, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(66, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 12))>")>\
+
+%<SLibCG_SetBOV(21, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(67, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 9))>")>\
+
+%<SLibCG_SetBOV(22, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(68, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 10))>")>\
+
+%<SLibCG_SetBOV(23, 0, 11, 1, "", -1, "", 0, "%<SLibCG_CS(4, 0, 11, 1, -1, "", 0)>")>\
+
+%<SLibCG_SetBOV(24, 0, 11, 1, "", -1, "", 0, "%<SLibCG_CS(5, 0, 11, 1, -1, "", 0)>")>\
+
+%<SLibCG_SetBOV(25, 0, 11, 1, "", -1, "", 0, "%<SLibCG_CS(6, 0, 11, 1, -1, "", 0)>")>\
+
+currentTime = %<SLibCG_SE(LibGetTaskTime(0))>;
+if(currentTime < %<SLibCG_SE(SLibCGIR_PV(72, 0, 11, 1, "", -1, "", 0))>) {
+rtb_Clock = %<SLibCG_SE(SLibCGIR_PV(73, 0, 11, 1, "", -1, "", 0))>;
+} else {
+rtb_Clock = %<SLibCG_SE(SLibCGIR_PV(74, 0, 11, 1, "", -1, "", 0))>;
+}
+
+currentTime = %<SLibCG_SE(LibGetTaskTime(0))>;
+if(currentTime < %<SLibCG_SE(SLibCGIR_PV(75, 0, 11, 1, "", -1, "", 0))>) {
+rtb_Step = %<SLibCG_SE(SLibCGIR_PV(76, 0, 11, 1, "", -1, "", 0))>;
+} else {
+rtb_Step = %<SLibCG_SE(SLibCGIR_PV(77, 0, 11, 1, "", -1, "", 0))>;
+}
+
+rtb_Clock += rtb_Step;
+
+rtb_Step = %<SLibCG_SE(SLibCG_CS(7, 0, 11, 1, -1, "", 0))>;
+
+rtb_Derivative3 = rtb_Clock * rtb_Step;
+
+currentTime = %<SLibCG_SE(LibGetTaskTime(0))>;
+if(currentTime < %<SLibCG_SE(SLibCGIR_PV(79, 0, 11, 1, "", -1, "", 0))>) {
+rtb_Clock = %<SLibCG_SE(SLibCGIR_PV(80, 0, 11, 1, "", -1, "", 0))>;
+} else {
+rtb_Clock = %<SLibCG_SE(SLibCGIR_PV(81, 0, 11, 1, "", -1, "", 0))>;
+}
+
+rtb_Derivative3 += rtb_Clock;
+
+%<SLibCG_SetBOV(26, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(82, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative3")>\
+
+%<SLibCG_SetBOV(27, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(83, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative3")>\
+
+%<SLibCG_SetBOV(28, 0, 11, 1, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(84, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative3")>\
+
+%<tlcOutputsFcnOfS11B19>\
+
+%<tlcOutputsFcnOfS11B20>\
+
+%<tlcOutputsFcnOfS11B21>\
+
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(23, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(24, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(25, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 3, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(26, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 4, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(27, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 5, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(28, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 6, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(85, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 7, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(86, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 8, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(87, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 9, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * rtb_Clock")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 10, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * rtb_Step")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 11, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative3")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 12, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(88, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 13, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(89, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(29, 0, 11, 15, "", -1, "", 14, "%<SLibCG_SE(SLibCGIR_PV(91, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(90, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<SLibCG_SetBOV(30, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(95, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(31, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(96, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 3))>")>\
+%<SLibCG_SetBOV(32, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(97, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 6))>")>\
+%<SLibCG_SetBOV(30, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(95, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(31, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(96, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 4))>")>\
+%<SLibCG_SetBOV(32, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(97, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 7))>")>\
+%<SLibCG_SetBOV(30, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(95, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 2))>")>\
+%<SLibCG_SetBOV(31, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(96, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 5))>")>\
+%<SLibCG_SetBOV(32, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(97, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(8, 0, 11, 21, "", -1, "", 8))>")>\
+
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(23, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(24, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(25, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 3, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(26, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 4, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(27, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 5, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(28, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 6, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(85, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 7, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(86, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 8, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(87, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 9, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * rtb_Clock")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 10, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * rtb_Step")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 11, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative3")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 12, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(88, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 13, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(89, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(33, 0, 11, 15, "", -1, "", 14, "%<SLibCG_SE(SLibCGIR_PV(98, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(90, 0, 11, 1, "", -1, "", 0))>")>\
+if(%<LibIsSampleHit(1)>) {
+
+%<SLibCG_SetBOV(34, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(100, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(99, 0, 11, 3, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(34, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(100, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(99, 0, 11, 3, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(34, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(100, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCGIR_PV(99, 0, 11, 3, "", -1, "", 2))>")>\
+}
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[6], "Output",0)
+
+AugPDTask_Synthesized_Atomic_Subsystem_For_Alg_Loop_1();
+
+%endif
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(7, 1, 3, 0, 3, 11)>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(8, 1, 3, 0, 3, 11)>\
+
+%<tlcOutputsFcnOfS11B32>\
+
+%<SLibCG_SetBOV(35, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(101, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(95, 0, 11, 6, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(35, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(101, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(93, 0, 11, 6, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(35, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(101, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative[0]")>\
+
+%<SLibCG_SetBOV(36, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCG_BOV(35, 0, 11, 3, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(11, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(36, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCG_BOV(35, 0, 11, 3, "", -1, "", 1))> - %<SLibCG_SE(SLibCG_BOV(12, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(36, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCG_BOV(35, 0, 11, 3, "", -1, "", 2))> - %<SLibCG_SE(SLibCG_BOV(55, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<tlcOutputsFcnOfS11B33>\
+
+%<tlcOutputsFcnOfS11B34>\
+
+%<tlcOutputsFcnOfS11B35>\
+
+%<SLibCG_SetBOV(37, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(102, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(95, 0, 11, 6, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(37, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(102, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(93, 0, 11, 6, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(37, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(102, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative[1]")>\
+
+%<SLibCG_SetBOV(38, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCG_BOV(37, 0, 11, 3, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(13, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(38, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCG_BOV(37, 0, 11, 3, "", -1, "", 1))> - %<SLibCG_SE(SLibCG_BOV(14, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(38, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCG_BOV(37, 0, 11, 3, "", -1, "", 2))> - %<SLibCG_SE(SLibCG_BOV(56, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<tlcOutputsFcnOfS11B36>\
+
+%<tlcOutputsFcnOfS11B37>\
+
+%<tlcOutputsFcnOfS11B38>\
+
+%<SLibCG_SetBOV(39, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(103, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(95, 0, 11, 6, "", -1, "", 2))>")>\
+%<SLibCG_SetBOV(39, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(103, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(93, 0, 11, 6, "", -1, "", 2))>")>\
+%<SLibCG_SetBOV(39, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(103, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative[2]")>\
+
+%<SLibCG_SetBOV(40, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCG_BOV(39, 0, 11, 3, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(15, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(40, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCG_BOV(39, 0, 11, 3, "", -1, "", 1))> - %<SLibCG_SE(SLibCG_BOV(16, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(40, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCG_BOV(39, 0, 11, 3, "", -1, "", 2))> - %<SLibCG_SE(SLibCG_BOV(57, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<tlcOutputsFcnOfS11B39>\
+
+%<tlcOutputsFcnOfS11B40>\
+
+%<tlcOutputsFcnOfS11B41>\
+
+%<SLibCG_SetBOV(41, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(104, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(95, 0, 11, 6, "", -1, "", 3))>")>\
+%<SLibCG_SetBOV(41, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(104, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(93, 0, 11, 6, "", -1, "", 3))>")>\
+%<SLibCG_SetBOV(41, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(104, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative[3]")>\
+
+%<SLibCG_SetBOV(42, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCG_BOV(41, 0, 11, 3, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(17, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(42, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCG_BOV(41, 0, 11, 3, "", -1, "", 1))> - %<SLibCG_SE(SLibCG_BOV(18, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(42, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCG_BOV(41, 0, 11, 3, "", -1, "", 2))> - %<SLibCG_SE(SLibCG_BOV(58, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<tlcOutputsFcnOfS11B42>\
+
+%<tlcOutputsFcnOfS11B43>\
+
+%<tlcOutputsFcnOfS11B44>\
+
+%<SLibCG_SetBOV(43, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(105, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(95, 0, 11, 6, "", -1, "", 4))>")>\
+%<SLibCG_SetBOV(43, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(105, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(93, 0, 11, 6, "", -1, "", 4))>")>\
+%<SLibCG_SetBOV(43, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(105, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative[4]")>\
+
+%<SLibCG_SetBOV(44, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCG_BOV(43, 0, 11, 3, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(19, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(44, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCG_BOV(43, 0, 11, 3, "", -1, "", 1))> - %<SLibCG_SE(SLibCG_BOV(20, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(44, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCG_BOV(43, 0, 11, 3, "", -1, "", 2))> - %<SLibCG_SE(SLibCG_BOV(59, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<tlcOutputsFcnOfS11B45>\
+
+%<tlcOutputsFcnOfS11B46>\
+
+%<tlcOutputsFcnOfS11B47>\
+
+%<SLibCG_SetBOV(45, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCGIR_PV(106, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(95, 0, 11, 6, "", -1, "", 5))>")>\
+%<SLibCG_SetBOV(45, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCGIR_PV(106, 0, 11, 1, "", -1, "", 0))> * %<SLibCG_SE(SLibCG_BOV(93, 0, 11, 6, "", -1, "", 5))>")>\
+%<SLibCG_SetBOV(45, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCGIR_PV(106, 0, 11, 1, "", -1, "", 0))> * rtb_Derivative[5]")>\
+
+%<SLibCG_SetBOV(46, 0, 11, 3, "", -1, "", 0, "%<SLibCG_SE(SLibCG_BOV(45, 0, 11, 3, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(21, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(46, 0, 11, 3, "", -1, "", 1, "%<SLibCG_SE(SLibCG_BOV(45, 0, 11, 3, "", -1, "", 1))> - %<SLibCG_SE(SLibCG_BOV(22, 0, 11, 1, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(46, 0, 11, 3, "", -1, "", 2, "%<SLibCG_SE(SLibCG_BOV(45, 0, 11, 3, "", -1, "", 2))> - %<SLibCG_SE(SLibCG_BOV(60, 0, 11, 1, "", -1, "", 0))>")>\
+
+%<tlcOutputsFcnOfS11B48>\
+
+%<tlcOutputsFcnOfS11B49>\
+
+%<tlcOutputsFcnOfS11B50>\
+
+%<tlcOutputsFcnOfS11B51>\
+
+%<tlcOutputsFcnOfS11B52>\
+
+%<tlcOutputsFcnOfS11B54>\
+
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 0, "%<SLibCG_SE(SLibCG_BOV(23, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(30, 0, 11, 3, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 1, "%<SLibCG_SE(SLibCG_BOV(24, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(30, 0, 11, 3, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 2, "%<SLibCG_SE(SLibCG_BOV(25, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(30, 0, 11, 3, "", -1, "", 2))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 3, "%<SLibCG_SE(SLibCG_BOV(26, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(31, 0, 11, 3, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 4, "%<SLibCG_SE(SLibCG_BOV(27, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(31, 0, 11, 3, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 5, "%<SLibCG_SE(SLibCG_BOV(28, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(31, 0, 11, 3, "", -1, "", 2))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 6, "%<SLibCG_SE(SLibCGIR_PV(85, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(32, 0, 11, 3, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 7, "%<SLibCG_SE(SLibCGIR_PV(86, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(32, 0, 11, 3, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 8, "%<SLibCG_SE(SLibCGIR_PV(87, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(32, 0, 11, 3, "", -1, "", 2))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 9, "rtb_Clock - %<SLibCG_SE(SLibCG_BOV(69, 0, 11, 3, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 10, "rtb_Step - %<SLibCG_SE(SLibCG_BOV(69, 0, 11, 3, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 11, "rtb_Derivative3 - %<SLibCG_SE(SLibCG_BOV(69, 0, 11, 3, "", -1, "", 2))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 12, "%<SLibCG_SE(SLibCGIR_PV(88, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(70, 0, 11, 3, "", -1, "", 0))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 13, "%<SLibCG_SE(SLibCGIR_PV(89, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(70, 0, 11, 3, "", -1, "", 1))>")>\
+%<SLibCG_SetBOV(47, 0, 11, 15, "", -1, "", 14, "%<SLibCG_SE(SLibCGIR_PV(90, 0, 11, 1, "", -1, "", 0))> - %<SLibCG_SE(SLibCG_BOV(70, 0, 11, 3, "", -1, "", 2))>")>\
+
+%<tlcOutputsFcnOfS11B55>\
+
+%<tlcOutputsFcnOfS11B56>\
+
+%<tlcOutputsFcnOfS11B57>\
+
+%<tlcOutputsFcnOfS11B71>\
+
+%<tlcOutputsFcnOfS11B95>\
+
+currentTime = %<SLibCG_SE(LibGetTaskTime(0))>;
+if(currentTime < %<SLibCG_SE(SLibCGIR_PV(109, 0, 11, 1, "", -1, "", 0))>) {
+rtb_Step = %<SLibCG_SE(SLibCGIR_PV(110, 0, 11, 1, "", -1, "", 0))>;
+} else {
+rtb_Step = %<SLibCG_SE(SLibCGIR_PV(111, 0, 11, 1, "", -1, "", 0))>;
+}
+
+%<SLibCG_SetBOV(49, 0, 11, 1, "", -1, "", 0, "(rtb_Clock - %<SLibCG_SE(SLibCGIR_PV(107, 0, 11, 1, "", -1, "", 0))>) * rtb_Step + %<SLibCG_SE(SLibCGIR_PV(108, 0, 11, 1, "", -1, "", 0))>")>\
+%endfunction

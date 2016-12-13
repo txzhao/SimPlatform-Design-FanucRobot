@@ -1,0 +1,10 @@
+%implements s13_b0_cgugh_Projection "C"
+
+%function Projection(block, system) Output
+%assign tlcProjectionFcnOfS11B15 = OpaqueTLCBlockFcn("Projection", 11, 15)
+%assign tlcProjectionFcnOfS11B71 = OpaqueTLCBlockFcn("Projection", 11, 71)
+
+%<tlcProjectionFcnOfS11B15>\
+
+%<tlcProjectionFcnOfS11B71>\
+%endfunction

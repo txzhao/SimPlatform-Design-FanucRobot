@@ -1,0 +1,129 @@
+%implements s13_b0_cgugh_2_Functions "C"
+
+%function AugPDTask_refp2_mldivide_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+int32_T ip;
+real_T temp;
+real_T b_A[36];
+int8_T ipiv[6];
+int32_T mmj;
+int32_T jj;
+int32_T jp1j;
+int32_T jpiv_offset;
+int32_T jrow;
+int32_T ix;
+real_T s;
+int32_T jA;
+int32_T d_k;
+int32_T i;
+memcpy((void *)&b_A[0], (void *)&A[0], 36U * sizeof(real_T));
+for(i = 0; i < 6; i++) {
+ipiv[i] = (int8_T)(1 + i);
+}
+for(i = 0; i < 5; i++) {
+mmj = 5 - i;
+jj = i * 7 + 1;
+jp1j = jj + 1;
+ip = mmj + 1;
+d_k = 1;
+ix = jj;
+temp = muDoubleScalarAbs(b_A[jj - 1]);
+for(jrow = 2; jrow <= ip; jrow++) {
+ix++;
+s = muDoubleScalarAbs(b_A[ix - 1]);
+if(s > temp) {
+d_k = jrow;
+temp = s;
+}
+}
+jpiv_offset = d_k - 1;
+if(b_A[(jj + jpiv_offset) - 1] != 0.0) {
+if(jpiv_offset != 0) {
+ipiv[i] = (int8_T)((i + 1) + jpiv_offset);
+jrow = 1 + i;
+ip = jrow + jpiv_offset;
+for(d_k = 0; d_k < 6; d_k++) {
+temp = b_A[jrow - 1];
+b_A[jrow - 1] = b_A[ip - 1];
+b_A[ip - 1] = temp;
+jrow += 6;
+ip += 6;
+}
+}
+ip = (mmj - 1) + jp1j;
+for(d_k = jp1j; d_k <= ip; d_k++) {
+b_A[d_k - 1] = b_A[d_k - 1] / b_A[jj - 1];
+}
+}
+jrow = 5 - i;
+jA = jj + 6;
+ip = jj + 6;
+for(d_k = 1; d_k <= jrow; d_k++) {
+if(b_A[ip - 1] != 0.0) {
+temp = b_A[ip - 1] * -1.0;
+jj = jp1j;
+jpiv_offset = mmj + jA;
+for(ix = 1 + jA; ix <= jpiv_offset; ix++) {
+b_A[ix - 1] = b_A[jj - 1] * temp + b_A[ix - 1];
+jj++;
+}
+}
+ip += 6;
+jA += 6;
+}
+}
+for(jpiv_offset = 0; jpiv_offset < 6; jpiv_offset++) {
+if(jpiv_offset + 1 != ipiv[jpiv_offset]) {
+ip = ipiv[jpiv_offset];
+for(d_k = 0; d_k < 6; d_k++) {
+temp = B[6 * d_k + jpiv_offset];
+B[jpiv_offset + 6 * d_k] = B[(ip - 1) + 6 * d_k];
+B[(ip - 1) + 6 * d_k] = temp;
+}
+}
+}
+for(jpiv_offset = 0; jpiv_offset < 6; jpiv_offset++) {
+ip = 6 * jpiv_offset;
+for(d_k = 0; d_k < 6; d_k++) {
+ix = 6 * d_k;
+if(B[((d_k + 1) + ip) - 1] != 0.0) {
+for(jrow = d_k + 2; jrow <= 6; jrow++) {
+B[(jrow + ip) - 1] = B[(jrow + ip) - 1] - B[((d_k + 1) + ip) - 1] * b_A[(jrow + ix) - 1];
+}
+}
+}
+}
+for(jpiv_offset = 0; jpiv_offset < 6; jpiv_offset++) {
+ip = 6 * jpiv_offset;
+for(d_k = 6; d_k > 0; d_k += -1) {
+ix = (d_k - 1) * 6;
+if(B[(d_k + ip) - 1] != 0.0) {
+B[(d_k + ip) - 1] = B[(d_k + ip) - 1] / b_A[(d_k + ix) - 1];
+jrow = d_k - 1;
+for(jj = 1; jj <= jrow; jj++) {
+B[(jj + ip) - 1] = B[(jj + ip) - 1] - B[(d_k + ip) - 1] * b_A[(jj + ix) - 1];
+}
+}
+}
+}
+%closefile fcnBuff
+%return fcnBuff
+%endfunction
+
+%function AugPDTask_Jacobian_Fcn1Call0Arg0(block) void
+%assign argBuff = ""
+%openfile argBuff
+Jb\
+%closefile argBuff
+%return argBuff
+%endfunction
+
+%function AugPDTask_Jacobian_Fcn1Call0Arg1(block) void
+%assign argBuff = ""
+%openfile argBuff
+b\
+%closefile argBuff
+%return argBuff
+%endfunction
+

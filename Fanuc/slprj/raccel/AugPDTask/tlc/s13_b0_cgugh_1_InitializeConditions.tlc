@@ -1,0 +1,6 @@
+%implements s13_b0_cgugh_1_InitializeConditions "C"
+
+%function InitializeConditions(block, system) Output
+
+%<SLibCG_SetDWV(70, 0, 7, 1, "", -1, "", 0, "0U")>\
+%endfunction

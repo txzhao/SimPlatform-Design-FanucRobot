@@ -1,0 +1,6 @@
+%implements s14_b0_nijsg_1_InitializeConditions "C"
+
+%function InitializeConditions(block, system) Output
+
+%<SLibCG_SetDWV(90, 0, 4, 1, "", -1, "", 0, "0U")>\
+%endfunction

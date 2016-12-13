@@ -1,0 +1,48 @@
+%implements s13_b0_cgugh_InitializeConditions "C"
+
+%function InitializeConditions(block, system) Output
+%assign tlcInitializeConditionsFcnOfS11B15 = OpaqueTLCBlockFcn("InitializeConditions", 11, 15)
+%assign tlcInitializeConditionsFcnOfS11B19 = OpaqueTLCBlockFcn("InitializeConditions", 11, 19)
+%assign tlcInitializeConditionsFcnOfS11B20 = OpaqueTLCBlockFcn("InitializeConditions", 11, 20)
+%assign tlcInitializeConditionsFcnOfS11B21 = OpaqueTLCBlockFcn("InitializeConditions", 11, 21)
+%assign tlcInitializeConditionsFcnOfS11B32 = OpaqueTLCBlockFcn("InitializeConditions", 11, 32)
+%assign tlcInitializeConditionsFcnOfS11B71 = OpaqueTLCBlockFcn("InitializeConditions", 11, 71)
+
+%<SLibCG_SE(SLibCG_CS(0, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCGIR_PV(53, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_CS(1, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCGIR_PV(54, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_CS(2, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCGIR_PV(55, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(7, 0, 2, 0, 2, 11)>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(8, 0, 2, 0, 2, 11)>\
+
+%<tlcInitializeConditionsFcnOfS11B15>\
+
+%<SLibCG_SE(SLibCG_CS(4, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCGIR_PV(69, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_CS(5, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCGIR_PV(70, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_CS(6, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCGIR_PV(71, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_CS(7, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCGIR_PV(78, 0, 11, 1, "", -1, "", 0))>;
+
+%<tlcInitializeConditionsFcnOfS11B19>\
+
+%<tlcInitializeConditionsFcnOfS11B20>\
+
+%<tlcInitializeConditionsFcnOfS11B21>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[6], "Initialize",0)
+
+AugPDTask_Synthesized_Atomic_Subsystem_For_Alg_Loop_1_Init();
+
+%endif
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(7, 1, 2, 0, 2, 11)>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(8, 1, 2, 0, 2, 11)>\
+
+%<tlcInitializeConditionsFcnOfS11B32>\
+
+%<tlcInitializeConditionsFcnOfS11B71>\
+%endfunction

@@ -1,0 +1,24 @@
+%implements s13_b0_cgugh_Derivatives "C"
+
+%function Derivatives(block, system) Output
+%assign tlcDerivativesFcnOfS11B15 = OpaqueTLCBlockFcn("Derivatives", 11, 15)
+%assign tlcDerivativesFcnOfS11B71 = OpaqueTLCBlockFcn("Derivatives", 11, 71)
+
+%<SLibCG_SE(SLibCG_DRV(0, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCG_BOV(1, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_DRV(1, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCG_BOV(2, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_DRV(2, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCG_BOV(4, 0, 11, 1, "", -1, "", 0))>;
+
+%<tlcDerivativesFcnOfS11B15>\
+
+%<SLibCG_SE(SLibCG_DRV(4, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCG_BOV(26, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_DRV(5, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCG_BOV(27, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_DRV(6, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCG_BOV(28, 0, 11, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_DRV(7, 0, 11, 1, -1, "", 0))> = %<SLibCG_SE(SLibCG_BOV(49, 0, 11, 1, "", -1, "", 0))>;
+
+%<tlcDerivativesFcnOfS11B71>\
+%endfunction

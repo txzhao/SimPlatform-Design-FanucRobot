@@ -1,0 +1,122 @@
+%implements s13_b0_cgugh_Start "C"
+
+%function Start(block, system) Output
+%assign tlcStartFcnOfS11B0 = OpaqueTLCBlockFcn("Start", 11, 0)
+%assign tlcStartFcnOfS11B2 = OpaqueTLCBlockFcn("Start", 11, 2)
+%assign tlcStartFcnOfS11B3 = OpaqueTLCBlockFcn("Start", 11, 3)
+%assign tlcStartFcnOfS11B6 = OpaqueTLCBlockFcn("Start", 11, 6)
+%assign tlcStartFcnOfS11B11 = OpaqueTLCBlockFcn("Start", 11, 11)
+%assign tlcStartFcnOfS11B12 = OpaqueTLCBlockFcn("Start", 11, 12)
+%assign tlcStartFcnOfS11B14 = OpaqueTLCBlockFcn("Start", 11, 14)
+%assign tlcStartFcnOfS11B15 = OpaqueTLCBlockFcn("Start", 11, 15)
+%assign tlcStartFcnOfS11B19 = OpaqueTLCBlockFcn("Start", 11, 19)
+%assign tlcStartFcnOfS11B20 = OpaqueTLCBlockFcn("Start", 11, 20)
+%assign tlcStartFcnOfS11B21 = OpaqueTLCBlockFcn("Start", 11, 21)
+%assign tlcStartFcnOfS11B32 = OpaqueTLCBlockFcn("Start", 11, 32)
+%assign tlcStartFcnOfS11B33 = OpaqueTLCBlockFcn("Start", 11, 33)
+%assign tlcStartFcnOfS11B34 = OpaqueTLCBlockFcn("Start", 11, 34)
+%assign tlcStartFcnOfS11B35 = OpaqueTLCBlockFcn("Start", 11, 35)
+%assign tlcStartFcnOfS11B36 = OpaqueTLCBlockFcn("Start", 11, 36)
+%assign tlcStartFcnOfS11B37 = OpaqueTLCBlockFcn("Start", 11, 37)
+%assign tlcStartFcnOfS11B38 = OpaqueTLCBlockFcn("Start", 11, 38)
+%assign tlcStartFcnOfS11B39 = OpaqueTLCBlockFcn("Start", 11, 39)
+%assign tlcStartFcnOfS11B40 = OpaqueTLCBlockFcn("Start", 11, 40)
+%assign tlcStartFcnOfS11B41 = OpaqueTLCBlockFcn("Start", 11, 41)
+%assign tlcStartFcnOfS11B42 = OpaqueTLCBlockFcn("Start", 11, 42)
+%assign tlcStartFcnOfS11B43 = OpaqueTLCBlockFcn("Start", 11, 43)
+%assign tlcStartFcnOfS11B44 = OpaqueTLCBlockFcn("Start", 11, 44)
+%assign tlcStartFcnOfS11B45 = OpaqueTLCBlockFcn("Start", 11, 45)
+%assign tlcStartFcnOfS11B46 = OpaqueTLCBlockFcn("Start", 11, 46)
+%assign tlcStartFcnOfS11B47 = OpaqueTLCBlockFcn("Start", 11, 47)
+%assign tlcStartFcnOfS11B48 = OpaqueTLCBlockFcn("Start", 11, 48)
+%assign tlcStartFcnOfS11B49 = OpaqueTLCBlockFcn("Start", 11, 49)
+%assign tlcStartFcnOfS11B50 = OpaqueTLCBlockFcn("Start", 11, 50)
+%assign tlcStartFcnOfS11B51 = OpaqueTLCBlockFcn("Start", 11, 51)
+%assign tlcStartFcnOfS11B52 = OpaqueTLCBlockFcn("Start", 11, 52)
+%assign tlcStartFcnOfS11B54 = OpaqueTLCBlockFcn("Start", 11, 54)
+%assign tlcStartFcnOfS11B55 = OpaqueTLCBlockFcn("Start", 11, 55)
+%assign tlcStartFcnOfS11B56 = OpaqueTLCBlockFcn("Start", 11, 56)
+%assign tlcStartFcnOfS11B57 = OpaqueTLCBlockFcn("Start", 11, 57)
+%assign tlcStartFcnOfS11B71 = OpaqueTLCBlockFcn("Start", 11, 71)
+%assign tlcStartFcnOfS11B95 = OpaqueTLCBlockFcn("Start", 11, 95)
+
+%<tlcStartFcnOfS11B0>\
+
+%<tlcStartFcnOfS11B2>\
+
+%<tlcStartFcnOfS11B3>\
+
+%<tlcStartFcnOfS11B6>\
+
+%<tlcStartFcnOfS11B11>\
+
+%<tlcStartFcnOfS11B12>\
+
+%<tlcStartFcnOfS11B14>\
+
+%<tlcStartFcnOfS11B15>\
+
+%<tlcStartFcnOfS11B19>\
+
+%<tlcStartFcnOfS11B20>\
+
+%<tlcStartFcnOfS11B21>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[6], "Start",0)
+
+AugPDTask_Synthesized_Atomic_Subsystem_For_Alg_Loop_1_Start();
+
+%endif
+%<tlcStartFcnOfS11B32>\
+
+%<tlcStartFcnOfS11B33>\
+
+%<tlcStartFcnOfS11B34>\
+
+%<tlcStartFcnOfS11B35>\
+
+%<tlcStartFcnOfS11B36>\
+
+%<tlcStartFcnOfS11B37>\
+
+%<tlcStartFcnOfS11B38>\
+
+%<tlcStartFcnOfS11B39>\
+
+%<tlcStartFcnOfS11B40>\
+
+%<tlcStartFcnOfS11B41>\
+
+%<tlcStartFcnOfS11B42>\
+
+%<tlcStartFcnOfS11B43>\
+
+%<tlcStartFcnOfS11B44>\
+
+%<tlcStartFcnOfS11B45>\
+
+%<tlcStartFcnOfS11B46>\
+
+%<tlcStartFcnOfS11B47>\
+
+%<tlcStartFcnOfS11B48>\
+
+%<tlcStartFcnOfS11B49>\
+
+%<tlcStartFcnOfS11B50>\
+
+%<tlcStartFcnOfS11B51>\
+
+%<tlcStartFcnOfS11B52>\
+
+%<tlcStartFcnOfS11B54>\
+
+%<tlcStartFcnOfS11B55>\
+
+%<tlcStartFcnOfS11B56>\
+
+%<tlcStartFcnOfS11B57>\
+
+%<tlcStartFcnOfS11B71>\
+
+%<tlcStartFcnOfS11B95>\
+%endfunction

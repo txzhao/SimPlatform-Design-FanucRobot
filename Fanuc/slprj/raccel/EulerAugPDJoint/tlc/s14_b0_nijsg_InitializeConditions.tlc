@@ -1,0 +1,86 @@
+%implements s14_b0_nijsg_InitializeConditions "C"
+
+%function InitializeConditions(block, system) Output
+%assign tlcInitializeConditionsFcnOfS12B9 = OpaqueTLCBlockFcn("InitializeConditions", 12, 9)
+%assign tlcInitializeConditionsFcnOfS12B10 = OpaqueTLCBlockFcn("InitializeConditions", 12, 10)
+%assign tlcInitializeConditionsFcnOfS12B11 = OpaqueTLCBlockFcn("InitializeConditions", 12, 11)
+%assign tlcInitializeConditionsFcnOfS12B12 = OpaqueTLCBlockFcn("InitializeConditions", 12, 12)
+%assign tlcInitializeConditionsFcnOfS12B13 = OpaqueTLCBlockFcn("InitializeConditions", 12, 13)
+%assign tlcInitializeConditionsFcnOfS12B14 = OpaqueTLCBlockFcn("InitializeConditions", 12, 14)
+%assign tlcInitializeConditionsFcnOfS12B17 = OpaqueTLCBlockFcn("InitializeConditions", 12, 17)
+%assign tlcInitializeConditionsFcnOfS12B18 = OpaqueTLCBlockFcn("InitializeConditions", 12, 18)
+%assign tlcInitializeConditionsFcnOfS12B19 = OpaqueTLCBlockFcn("InitializeConditions", 12, 19)
+%assign tlcInitializeConditionsFcnOfS12B20 = OpaqueTLCBlockFcn("InitializeConditions", 12, 20)
+%assign tlcInitializeConditionsFcnOfS12B31 = OpaqueTLCBlockFcn("InitializeConditions", 12, 31)
+%assign tlcInitializeConditionsFcnOfS12B62 = OpaqueTLCBlockFcn("InitializeConditions", 12, 62)
+%assign tlcInitializeConditionsFcnOfS12B63 = OpaqueTLCBlockFcn("InitializeConditions", 12, 63)
+%assign tlcInitializeConditionsFcnOfS12B64 = OpaqueTLCBlockFcn("InitializeConditions", 12, 64)
+%assign tlcInitializeConditionsFcnOfS12B91 = OpaqueTLCBlockFcn("InitializeConditions", 12, 91)
+%assign tlcInitializeConditionsFcnOfS12B115 = OpaqueTLCBlockFcn("InitializeConditions", 12, 115)
+%assign tlcInitializeConditionsFcnOfS12B119 = OpaqueTLCBlockFcn("InitializeConditions", 12, 119)
+%assign tlcInitializeConditionsFcnOfS12B120 = OpaqueTLCBlockFcn("InitializeConditions", 12, 120)
+%assign tlcInitializeConditionsFcnOfS12B121 = OpaqueTLCBlockFcn("InitializeConditions", 12, 121)
+%assign tlcInitializeConditionsFcnOfS12B122 = OpaqueTLCBlockFcn("InitializeConditions", 12, 122)
+%assign tlcInitializeConditionsFcnOfS12B123 = OpaqueTLCBlockFcn("InitializeConditions", 12, 123)
+%assign tlcInitializeConditionsFcnOfS12B124 = OpaqueTLCBlockFcn("InitializeConditions", 12, 124)
+
+%<tlcInitializeConditionsFcnOfS12B9>\
+
+%<tlcInitializeConditionsFcnOfS12B10>\
+
+%<tlcInitializeConditionsFcnOfS12B11>\
+
+%<tlcInitializeConditionsFcnOfS12B12>\
+
+%<tlcInitializeConditionsFcnOfS12B13>\
+
+%<tlcInitializeConditionsFcnOfS12B14>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(4, 0, 2, 0, 2, 12)>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(5, 0, 2, 0, 2, 12)>\
+
+%<tlcInitializeConditionsFcnOfS12B17>\
+
+%<tlcInitializeConditionsFcnOfS12B18>\
+
+%<tlcInitializeConditionsFcnOfS12B19>\
+
+%<tlcInitializeConditionsFcnOfS12B20>\
+
+%<SLibCG_SetDWV(67, 0, 12, 1, "", -1, "", 0, "0U")>\
+
+%<SLibCG_SetDWV(66, 0, 12, 1, "", -1, "", 0, "0U")>\
+
+%<tlcInitializeConditionsFcnOfS12B31>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[3], "Initialize",0)
+
+EulerAugPDJoint_Synthesized_Atomic_Subsystem_For_Alg_Loop_1_Init();
+
+%endif
+%<tlcInitializeConditionsFcnOfS12B62>\
+
+%<tlcInitializeConditionsFcnOfS12B63>\
+
+%<tlcInitializeConditionsFcnOfS12B64>\
+
+%<tlcInitializeConditionsFcnOfS12B91>\
+
+%<tlcInitializeConditionsFcnOfS12B115>\
+
+%<tlcInitializeConditionsFcnOfS12B119>\
+
+%<tlcInitializeConditionsFcnOfS12B120>\
+
+%<tlcInitializeConditionsFcnOfS12B121>\
+
+%<tlcInitializeConditionsFcnOfS12B122>\
+
+%<tlcInitializeConditionsFcnOfS12B123>\
+
+%<tlcInitializeConditionsFcnOfS12B124>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(4, 1, 2, 0, 2, 12)>\
+
+%<SLibCGIRGenReusableSysCallNoCGIRArgs(5, 1, 2, 0, 2, 12)>\
+%endfunction

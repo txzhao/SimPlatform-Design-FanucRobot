@@ -1,0 +1,317 @@
+%implements s14_b0_nijsg_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign tlcTerminateFcnOfS12B0 = OpaqueTLCBlockFcn("Terminate", 12, 0)
+%assign tlcTerminateFcnOfS12B2 = OpaqueTLCBlockFcn("Terminate", 12, 2)
+%assign tlcTerminateFcnOfS12B3 = OpaqueTLCBlockFcn("Terminate", 12, 3)
+%assign tlcTerminateFcnOfS12B6 = OpaqueTLCBlockFcn("Terminate", 12, 6)
+%assign tlcTerminateFcnOfS12B9 = OpaqueTLCBlockFcn("Terminate", 12, 9)
+%assign tlcTerminateFcnOfS12B10 = OpaqueTLCBlockFcn("Terminate", 12, 10)
+%assign tlcTerminateFcnOfS12B11 = OpaqueTLCBlockFcn("Terminate", 12, 11)
+%assign tlcTerminateFcnOfS12B12 = OpaqueTLCBlockFcn("Terminate", 12, 12)
+%assign tlcTerminateFcnOfS12B13 = OpaqueTLCBlockFcn("Terminate", 12, 13)
+%assign tlcTerminateFcnOfS12B14 = OpaqueTLCBlockFcn("Terminate", 12, 14)
+%assign tlcTerminateFcnOfS12B17 = OpaqueTLCBlockFcn("Terminate", 12, 17)
+%assign tlcTerminateFcnOfS12B18 = OpaqueTLCBlockFcn("Terminate", 12, 18)
+%assign tlcTerminateFcnOfS12B19 = OpaqueTLCBlockFcn("Terminate", 12, 19)
+%assign tlcTerminateFcnOfS12B20 = OpaqueTLCBlockFcn("Terminate", 12, 20)
+%assign tlcTerminateFcnOfS12B22 = OpaqueTLCBlockFcn("Terminate", 12, 22)
+%assign tlcTerminateFcnOfS12B23 = OpaqueTLCBlockFcn("Terminate", 12, 23)
+%assign tlcTerminateFcnOfS12B26 = OpaqueTLCBlockFcn("Terminate", 12, 26)
+%assign tlcTerminateFcnOfS12B29 = OpaqueTLCBlockFcn("Terminate", 12, 29)
+%assign tlcTerminateFcnOfS12B31 = OpaqueTLCBlockFcn("Terminate", 12, 31)
+%assign tlcTerminateFcnOfS12B34 = OpaqueTLCBlockFcn("Terminate", 12, 34)
+%assign tlcTerminateFcnOfS12B35 = OpaqueTLCBlockFcn("Terminate", 12, 35)
+%assign tlcTerminateFcnOfS12B36 = OpaqueTLCBlockFcn("Terminate", 12, 36)
+%assign tlcTerminateFcnOfS12B38 = OpaqueTLCBlockFcn("Terminate", 12, 38)
+%assign tlcTerminateFcnOfS12B39 = OpaqueTLCBlockFcn("Terminate", 12, 39)
+%assign tlcTerminateFcnOfS12B40 = OpaqueTLCBlockFcn("Terminate", 12, 40)
+%assign tlcTerminateFcnOfS12B41 = OpaqueTLCBlockFcn("Terminate", 12, 41)
+%assign tlcTerminateFcnOfS12B43 = OpaqueTLCBlockFcn("Terminate", 12, 43)
+%assign tlcTerminateFcnOfS12B44 = OpaqueTLCBlockFcn("Terminate", 12, 44)
+%assign tlcTerminateFcnOfS12B45 = OpaqueTLCBlockFcn("Terminate", 12, 45)
+%assign tlcTerminateFcnOfS12B46 = OpaqueTLCBlockFcn("Terminate", 12, 46)
+%assign tlcTerminateFcnOfS12B47 = OpaqueTLCBlockFcn("Terminate", 12, 47)
+%assign tlcTerminateFcnOfS12B48 = OpaqueTLCBlockFcn("Terminate", 12, 48)
+%assign tlcTerminateFcnOfS12B49 = OpaqueTLCBlockFcn("Terminate", 12, 49)
+%assign tlcTerminateFcnOfS12B50 = OpaqueTLCBlockFcn("Terminate", 12, 50)
+%assign tlcTerminateFcnOfS12B51 = OpaqueTLCBlockFcn("Terminate", 12, 51)
+%assign tlcTerminateFcnOfS12B52 = OpaqueTLCBlockFcn("Terminate", 12, 52)
+%assign tlcTerminateFcnOfS12B53 = OpaqueTLCBlockFcn("Terminate", 12, 53)
+%assign tlcTerminateFcnOfS12B54 = OpaqueTLCBlockFcn("Terminate", 12, 54)
+%assign tlcTerminateFcnOfS12B55 = OpaqueTLCBlockFcn("Terminate", 12, 55)
+%assign tlcTerminateFcnOfS12B56 = OpaqueTLCBlockFcn("Terminate", 12, 56)
+%assign tlcTerminateFcnOfS12B57 = OpaqueTLCBlockFcn("Terminate", 12, 57)
+%assign tlcTerminateFcnOfS12B58 = OpaqueTLCBlockFcn("Terminate", 12, 58)
+%assign tlcTerminateFcnOfS12B59 = OpaqueTLCBlockFcn("Terminate", 12, 59)
+%assign tlcTerminateFcnOfS12B61 = OpaqueTLCBlockFcn("Terminate", 12, 61)
+%assign tlcTerminateFcnOfS12B62 = OpaqueTLCBlockFcn("Terminate", 12, 62)
+%assign tlcTerminateFcnOfS12B63 = OpaqueTLCBlockFcn("Terminate", 12, 63)
+%assign tlcTerminateFcnOfS12B64 = OpaqueTLCBlockFcn("Terminate", 12, 64)
+%assign tlcTerminateFcnOfS12B65 = OpaqueTLCBlockFcn("Terminate", 12, 65)
+%assign tlcTerminateFcnOfS12B66 = OpaqueTLCBlockFcn("Terminate", 12, 66)
+%assign tlcTerminateFcnOfS12B67 = OpaqueTLCBlockFcn("Terminate", 12, 67)
+%assign tlcTerminateFcnOfS12B68 = OpaqueTLCBlockFcn("Terminate", 12, 68)
+%assign tlcTerminateFcnOfS12B69 = OpaqueTLCBlockFcn("Terminate", 12, 69)
+%assign tlcTerminateFcnOfS12B71 = OpaqueTLCBlockFcn("Terminate", 12, 71)
+%assign tlcTerminateFcnOfS12B72 = OpaqueTLCBlockFcn("Terminate", 12, 72)
+%assign tlcTerminateFcnOfS12B73 = OpaqueTLCBlockFcn("Terminate", 12, 73)
+%assign tlcTerminateFcnOfS12B75 = OpaqueTLCBlockFcn("Terminate", 12, 75)
+%assign tlcTerminateFcnOfS12B76 = OpaqueTLCBlockFcn("Terminate", 12, 76)
+%assign tlcTerminateFcnOfS12B77 = OpaqueTLCBlockFcn("Terminate", 12, 77)
+%assign tlcTerminateFcnOfS12B78 = OpaqueTLCBlockFcn("Terminate", 12, 78)
+%assign tlcTerminateFcnOfS12B79 = OpaqueTLCBlockFcn("Terminate", 12, 79)
+%assign tlcTerminateFcnOfS12B80 = OpaqueTLCBlockFcn("Terminate", 12, 80)
+%assign tlcTerminateFcnOfS12B81 = OpaqueTLCBlockFcn("Terminate", 12, 81)
+%assign tlcTerminateFcnOfS12B82 = OpaqueTLCBlockFcn("Terminate", 12, 82)
+%assign tlcTerminateFcnOfS12B83 = OpaqueTLCBlockFcn("Terminate", 12, 83)
+%assign tlcTerminateFcnOfS12B84 = OpaqueTLCBlockFcn("Terminate", 12, 84)
+%assign tlcTerminateFcnOfS12B85 = OpaqueTLCBlockFcn("Terminate", 12, 85)
+%assign tlcTerminateFcnOfS12B86 = OpaqueTLCBlockFcn("Terminate", 12, 86)
+%assign tlcTerminateFcnOfS12B87 = OpaqueTLCBlockFcn("Terminate", 12, 87)
+%assign tlcTerminateFcnOfS12B88 = OpaqueTLCBlockFcn("Terminate", 12, 88)
+%assign tlcTerminateFcnOfS12B89 = OpaqueTLCBlockFcn("Terminate", 12, 89)
+%assign tlcTerminateFcnOfS12B90 = OpaqueTLCBlockFcn("Terminate", 12, 90)
+%assign tlcTerminateFcnOfS12B91 = OpaqueTLCBlockFcn("Terminate", 12, 91)
+%assign tlcTerminateFcnOfS12B92 = OpaqueTLCBlockFcn("Terminate", 12, 92)
+%assign tlcTerminateFcnOfS12B93 = OpaqueTLCBlockFcn("Terminate", 12, 93)
+%assign tlcTerminateFcnOfS12B94 = OpaqueTLCBlockFcn("Terminate", 12, 94)
+%assign tlcTerminateFcnOfS12B95 = OpaqueTLCBlockFcn("Terminate", 12, 95)
+%assign tlcTerminateFcnOfS12B96 = OpaqueTLCBlockFcn("Terminate", 12, 96)
+%assign tlcTerminateFcnOfS12B97 = OpaqueTLCBlockFcn("Terminate", 12, 97)
+%assign tlcTerminateFcnOfS12B98 = OpaqueTLCBlockFcn("Terminate", 12, 98)
+%assign tlcTerminateFcnOfS12B99 = OpaqueTLCBlockFcn("Terminate", 12, 99)
+%assign tlcTerminateFcnOfS12B100 = OpaqueTLCBlockFcn("Terminate", 12, 100)
+%assign tlcTerminateFcnOfS12B101 = OpaqueTLCBlockFcn("Terminate", 12, 101)
+%assign tlcTerminateFcnOfS12B102 = OpaqueTLCBlockFcn("Terminate", 12, 102)
+%assign tlcTerminateFcnOfS12B103 = OpaqueTLCBlockFcn("Terminate", 12, 103)
+%assign tlcTerminateFcnOfS12B104 = OpaqueTLCBlockFcn("Terminate", 12, 104)
+%assign tlcTerminateFcnOfS12B105 = OpaqueTLCBlockFcn("Terminate", 12, 105)
+%assign tlcTerminateFcnOfS12B106 = OpaqueTLCBlockFcn("Terminate", 12, 106)
+%assign tlcTerminateFcnOfS12B107 = OpaqueTLCBlockFcn("Terminate", 12, 107)
+%assign tlcTerminateFcnOfS12B108 = OpaqueTLCBlockFcn("Terminate", 12, 108)
+%assign tlcTerminateFcnOfS12B109 = OpaqueTLCBlockFcn("Terminate", 12, 109)
+%assign tlcTerminateFcnOfS12B110 = OpaqueTLCBlockFcn("Terminate", 12, 110)
+%assign tlcTerminateFcnOfS12B111 = OpaqueTLCBlockFcn("Terminate", 12, 111)
+%assign tlcTerminateFcnOfS12B112 = OpaqueTLCBlockFcn("Terminate", 12, 112)
+%assign tlcTerminateFcnOfS12B113 = OpaqueTLCBlockFcn("Terminate", 12, 113)
+%assign tlcTerminateFcnOfS12B114 = OpaqueTLCBlockFcn("Terminate", 12, 114)
+%assign tlcTerminateFcnOfS12B115 = OpaqueTLCBlockFcn("Terminate", 12, 115)
+%assign tlcTerminateFcnOfS12B116 = OpaqueTLCBlockFcn("Terminate", 12, 116)
+%assign tlcTerminateFcnOfS12B119 = OpaqueTLCBlockFcn("Terminate", 12, 119)
+%assign tlcTerminateFcnOfS12B120 = OpaqueTLCBlockFcn("Terminate", 12, 120)
+%assign tlcTerminateFcnOfS12B121 = OpaqueTLCBlockFcn("Terminate", 12, 121)
+%assign tlcTerminateFcnOfS12B122 = OpaqueTLCBlockFcn("Terminate", 12, 122)
+%assign tlcTerminateFcnOfS12B123 = OpaqueTLCBlockFcn("Terminate", 12, 123)
+%assign tlcTerminateFcnOfS12B124 = OpaqueTLCBlockFcn("Terminate", 12, 124)
+
+%<tlcTerminateFcnOfS12B0>\
+
+%<tlcTerminateFcnOfS12B2>\
+
+%<tlcTerminateFcnOfS12B3>\
+
+%<tlcTerminateFcnOfS12B6>\
+
+%<tlcTerminateFcnOfS12B9>\
+
+%<tlcTerminateFcnOfS12B10>\
+
+%<tlcTerminateFcnOfS12B11>\
+
+%<tlcTerminateFcnOfS12B12>\
+
+%<tlcTerminateFcnOfS12B13>\
+
+%<tlcTerminateFcnOfS12B14>\
+
+%<tlcTerminateFcnOfS12B17>\
+
+%<tlcTerminateFcnOfS12B18>\
+
+%<tlcTerminateFcnOfS12B19>\
+
+%<tlcTerminateFcnOfS12B20>\
+
+%<tlcTerminateFcnOfS12B22>\
+
+%<tlcTerminateFcnOfS12B23>\
+
+%<tlcTerminateFcnOfS12B26>\
+
+%<tlcTerminateFcnOfS12B29>\
+
+%<tlcTerminateFcnOfS12B31>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[3], "Terminate",0)
+
+EulerAugPDJoint_Synthesized_Atomic_Subsystem_For_Alg_Loop_1_Term();
+
+%endif
+%<tlcTerminateFcnOfS12B34>\
+
+%<tlcTerminateFcnOfS12B35>\
+
+%<tlcTerminateFcnOfS12B36>\
+
+%<tlcTerminateFcnOfS12B38>\
+
+%<tlcTerminateFcnOfS12B39>\
+
+%<tlcTerminateFcnOfS12B40>\
+
+%<tlcTerminateFcnOfS12B41>\
+
+%<tlcTerminateFcnOfS12B43>\
+
+%<tlcTerminateFcnOfS12B44>\
+
+%<tlcTerminateFcnOfS12B45>\
+
+%<tlcTerminateFcnOfS12B46>\
+
+%<tlcTerminateFcnOfS12B47>\
+
+%<tlcTerminateFcnOfS12B48>\
+
+%<tlcTerminateFcnOfS12B49>\
+
+%<tlcTerminateFcnOfS12B50>\
+
+%<tlcTerminateFcnOfS12B51>\
+
+%<tlcTerminateFcnOfS12B52>\
+
+%<tlcTerminateFcnOfS12B53>\
+
+%<tlcTerminateFcnOfS12B54>\
+
+%<tlcTerminateFcnOfS12B55>\
+
+%<tlcTerminateFcnOfS12B56>\
+
+%<tlcTerminateFcnOfS12B57>\
+
+%<tlcTerminateFcnOfS12B58>\
+
+%<tlcTerminateFcnOfS12B59>\
+
+%<tlcTerminateFcnOfS12B61>\
+
+%<tlcTerminateFcnOfS12B62>\
+
+%<tlcTerminateFcnOfS12B63>\
+
+%<tlcTerminateFcnOfS12B64>\
+
+%<tlcTerminateFcnOfS12B65>\
+
+%<tlcTerminateFcnOfS12B66>\
+
+%<tlcTerminateFcnOfS12B67>\
+
+%<tlcTerminateFcnOfS12B68>\
+
+%<tlcTerminateFcnOfS12B69>\
+
+%<tlcTerminateFcnOfS12B71>\
+
+%<tlcTerminateFcnOfS12B72>\
+
+%<tlcTerminateFcnOfS12B73>\
+
+%<tlcTerminateFcnOfS12B75>\
+
+%<tlcTerminateFcnOfS12B76>\
+
+%<tlcTerminateFcnOfS12B77>\
+
+%<tlcTerminateFcnOfS12B78>\
+
+%<tlcTerminateFcnOfS12B79>\
+
+%<tlcTerminateFcnOfS12B80>\
+
+%<tlcTerminateFcnOfS12B81>\
+
+%<tlcTerminateFcnOfS12B82>\
+
+%<tlcTerminateFcnOfS12B83>\
+
+%<tlcTerminateFcnOfS12B84>\
+
+%<tlcTerminateFcnOfS12B85>\
+
+%<tlcTerminateFcnOfS12B86>\
+
+%<tlcTerminateFcnOfS12B87>\
+
+%<tlcTerminateFcnOfS12B88>\
+
+%<tlcTerminateFcnOfS12B89>\
+
+%<tlcTerminateFcnOfS12B90>\
+
+%<tlcTerminateFcnOfS12B91>\
+
+%<tlcTerminateFcnOfS12B92>\
+
+%<tlcTerminateFcnOfS12B93>\
+
+%<tlcTerminateFcnOfS12B94>\
+
+%<tlcTerminateFcnOfS12B95>\
+
+%<tlcTerminateFcnOfS12B96>\
+
+%<tlcTerminateFcnOfS12B97>\
+
+%<tlcTerminateFcnOfS12B98>\
+
+%<tlcTerminateFcnOfS12B99>\
+
+%<tlcTerminateFcnOfS12B100>\
+
+%<tlcTerminateFcnOfS12B101>\
+
+%<tlcTerminateFcnOfS12B102>\
+
+%<tlcTerminateFcnOfS12B103>\
+
+%<tlcTerminateFcnOfS12B104>\
+
+%<tlcTerminateFcnOfS12B105>\
+
+%<tlcTerminateFcnOfS12B106>\
+
+%<tlcTerminateFcnOfS12B107>\
+
+%<tlcTerminateFcnOfS12B108>\
+
+%<tlcTerminateFcnOfS12B109>\
+
+%<tlcTerminateFcnOfS12B110>\
+
+%<tlcTerminateFcnOfS12B111>\
+
+%<tlcTerminateFcnOfS12B112>\
+
+%<tlcTerminateFcnOfS12B113>\
+
+%<tlcTerminateFcnOfS12B114>\
+
+%<tlcTerminateFcnOfS12B115>\
+
+%<tlcTerminateFcnOfS12B116>\
+
+%<tlcTerminateFcnOfS12B119>\
+
+%<tlcTerminateFcnOfS12B120>\
+
+%<tlcTerminateFcnOfS12B121>\
+
+%<tlcTerminateFcnOfS12B122>\
+
+%<tlcTerminateFcnOfS12B123>\
+
+%<tlcTerminateFcnOfS12B124>\
+%endfunction

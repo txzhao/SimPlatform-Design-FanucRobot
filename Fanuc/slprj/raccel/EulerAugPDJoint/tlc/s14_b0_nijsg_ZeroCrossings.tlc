@@ -1,0 +1,20 @@
+%implements s14_b0_nijsg_ZeroCrossings "C"
+
+%function ZeroCrossings(block, system) Output
+
+%<SLibCG_SE(SLibCG_ZCSV(0, 0, 0, 12, 1, -1, "", 0))> = %<SLibCG_SE(LibGetT())> - %<SLibCG_SE(SLibCGIR_PV(39, 0, 12, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_ZCSV(1, 0, 0, 12, 1, -1, "", 0))> = %<SLibCG_SE(LibGetT())> - %<SLibCG_SE(SLibCGIR_PV(44, 0, 12, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_ZCSV(2, 0, 0, 12, 1, -1, "", 0))> = %<SLibCG_SE(LibGetT())> - %<SLibCG_SE(SLibCGIR_PV(78, 0, 12, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_ZCSV(3, 0, 0, 12, 1, -1, "", 0))> = %<SLibCG_SE(LibGetT())> - %<SLibCG_SE(SLibCGIR_PV(83, 0, 12, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_ZCSV(4, 0, 0, 12, 1, -1, "", 0))> = %<SLibCG_SE(LibGetT())> - %<SLibCG_SE(SLibCGIR_PV(111, 0, 12, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_ZCSV(5, 0, 0, 12, 1, -1, "", 0))> = %<SLibCG_SE(LibGetT())> - %<SLibCG_SE(SLibCGIR_PV(114, 0, 12, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_ZCSV(6, 0, 0, 12, 1, -1, "", 0))> = %<SLibCG_SE(LibGetT())> - %<SLibCG_SE(SLibCGIR_PV(118, 0, 12, 1, "", -1, "", 0))>;
+
+%<SLibCG_SE(SLibCG_ZCSV(7, 0, 0, 12, 1, -1, "", 0))> = %<SLibCG_SE(LibGetT())> - %<SLibCG_SE(SLibCGIR_PV(129, 0, 12, 1, "", -1, "", 0))>;
+%endfunction

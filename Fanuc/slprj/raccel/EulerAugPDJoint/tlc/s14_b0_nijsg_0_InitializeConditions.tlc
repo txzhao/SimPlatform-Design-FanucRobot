@@ -1,0 +1,13 @@
+%implements s14_b0_nijsg_0_InitializeConditions "C"
+
+%function InitializeConditions(block, system) Output
+%assign tlcInitializeConditionsFcnOfS3B0 = OpaqueTLCBlockFcn("InitializeConditions", 3, 0)
+
+%<tlcInitializeConditionsFcnOfS3B0>\
+
+%<SLibCG_SetDWV(68, 0, 12, 1, "", -1, "", 0, "0U")>\
+
+%<SLibCG_SetDWV(69, 0, 12, 1, "", -1, "", 0, "0U")>\
+
+%<SLibCG_SetDWV(70, 0, 12, 1, "", -1, "", 0, "0U")>\
+%endfunction

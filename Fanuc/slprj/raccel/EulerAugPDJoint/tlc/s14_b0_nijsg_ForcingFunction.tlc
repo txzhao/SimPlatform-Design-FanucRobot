@@ -1,0 +1,58 @@
+%implements s14_b0_nijsg_ForcingFunction "C"
+
+%function ForcingFunction(block, system) Output
+%assign tlcForcingFunctionFcnOfS12B9 = OpaqueTLCBlockFcn("ForcingFunction", 12, 9)
+%assign tlcForcingFunctionFcnOfS12B10 = OpaqueTLCBlockFcn("ForcingFunction", 12, 10)
+%assign tlcForcingFunctionFcnOfS12B11 = OpaqueTLCBlockFcn("ForcingFunction", 12, 11)
+%assign tlcForcingFunctionFcnOfS12B12 = OpaqueTLCBlockFcn("ForcingFunction", 12, 12)
+%assign tlcForcingFunctionFcnOfS12B13 = OpaqueTLCBlockFcn("ForcingFunction", 12, 13)
+%assign tlcForcingFunctionFcnOfS12B14 = OpaqueTLCBlockFcn("ForcingFunction", 12, 14)
+%assign tlcForcingFunctionFcnOfS12B17 = OpaqueTLCBlockFcn("ForcingFunction", 12, 17)
+%assign tlcForcingFunctionFcnOfS12B18 = OpaqueTLCBlockFcn("ForcingFunction", 12, 18)
+%assign tlcForcingFunctionFcnOfS12B19 = OpaqueTLCBlockFcn("ForcingFunction", 12, 19)
+%assign tlcForcingFunctionFcnOfS12B20 = OpaqueTLCBlockFcn("ForcingFunction", 12, 20)
+%assign tlcForcingFunctionFcnOfS12B91 = OpaqueTLCBlockFcn("ForcingFunction", 12, 91)
+%assign tlcForcingFunctionFcnOfS12B115 = OpaqueTLCBlockFcn("ForcingFunction", 12, 115)
+%assign tlcForcingFunctionFcnOfS12B119 = OpaqueTLCBlockFcn("ForcingFunction", 12, 119)
+%assign tlcForcingFunctionFcnOfS12B120 = OpaqueTLCBlockFcn("ForcingFunction", 12, 120)
+%assign tlcForcingFunctionFcnOfS12B121 = OpaqueTLCBlockFcn("ForcingFunction", 12, 121)
+%assign tlcForcingFunctionFcnOfS12B122 = OpaqueTLCBlockFcn("ForcingFunction", 12, 122)
+%assign tlcForcingFunctionFcnOfS12B123 = OpaqueTLCBlockFcn("ForcingFunction", 12, 123)
+%assign tlcForcingFunctionFcnOfS12B124 = OpaqueTLCBlockFcn("ForcingFunction", 12, 124)
+
+%<tlcForcingFunctionFcnOfS12B9>\
+
+%<tlcForcingFunctionFcnOfS12B10>\
+
+%<tlcForcingFunctionFcnOfS12B11>\
+
+%<tlcForcingFunctionFcnOfS12B12>\
+
+%<tlcForcingFunctionFcnOfS12B13>\
+
+%<tlcForcingFunctionFcnOfS12B14>\
+
+%<tlcForcingFunctionFcnOfS12B17>\
+
+%<tlcForcingFunctionFcnOfS12B18>\
+
+%<tlcForcingFunctionFcnOfS12B19>\
+
+%<tlcForcingFunctionFcnOfS12B20>\
+
+%<tlcForcingFunctionFcnOfS12B91>\
+
+%<tlcForcingFunctionFcnOfS12B115>\
+
+%<tlcForcingFunctionFcnOfS12B119>\
+
+%<tlcForcingFunctionFcnOfS12B120>\
+
+%<tlcForcingFunctionFcnOfS12B121>\
+
+%<tlcForcingFunctionFcnOfS12B122>\
+
+%<tlcForcingFunctionFcnOfS12B123>\
+
+%<tlcForcingFunctionFcnOfS12B124>\
+%endfunction

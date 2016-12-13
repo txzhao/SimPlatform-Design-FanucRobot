@@ -1,0 +1,7 @@
+%implements s14_b0_nijsg_0_Start "C"
+
+%function Start(block, system) Output
+%assign tlcStartFcnOfS3B0 = OpaqueTLCBlockFcn("Start", 3, 0)
+
+%<tlcStartFcnOfS3B0>\
+%endfunction

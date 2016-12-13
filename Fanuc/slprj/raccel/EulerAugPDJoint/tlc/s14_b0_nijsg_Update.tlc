@@ -1,0 +1,86 @@
+%implements s14_b0_nijsg_Update "C"
+
+%function Update(block, system) Output
+%assign tlcUpdateFcnOfS12B0 = OpaqueTLCBlockFcn("Update", 12, 0)
+%assign tlcUpdateFcnOfS12B2 = OpaqueTLCBlockFcn("Update", 12, 2)
+%assign tlcUpdateFcnOfS12B9 = OpaqueTLCBlockFcn("Update", 12, 9)
+%assign tlcUpdateFcnOfS12B10 = OpaqueTLCBlockFcn("Update", 12, 10)
+%assign tlcUpdateFcnOfS12B11 = OpaqueTLCBlockFcn("Update", 12, 11)
+%assign tlcUpdateFcnOfS12B12 = OpaqueTLCBlockFcn("Update", 12, 12)
+%assign tlcUpdateFcnOfS12B13 = OpaqueTLCBlockFcn("Update", 12, 13)
+%assign tlcUpdateFcnOfS12B14 = OpaqueTLCBlockFcn("Update", 12, 14)
+%assign tlcUpdateFcnOfS12B17 = OpaqueTLCBlockFcn("Update", 12, 17)
+%assign tlcUpdateFcnOfS12B18 = OpaqueTLCBlockFcn("Update", 12, 18)
+%assign tlcUpdateFcnOfS12B19 = OpaqueTLCBlockFcn("Update", 12, 19)
+%assign tlcUpdateFcnOfS12B20 = OpaqueTLCBlockFcn("Update", 12, 20)
+%assign tlcUpdateFcnOfS12B22 = OpaqueTLCBlockFcn("Update", 12, 22)
+%assign tlcUpdateFcnOfS12B29 = OpaqueTLCBlockFcn("Update", 12, 29)
+%assign tlcUpdateFcnOfS12B31 = OpaqueTLCBlockFcn("Update", 12, 31)
+%assign tlcUpdateFcnOfS12B62 = OpaqueTLCBlockFcn("Update", 12, 62)
+%assign tlcUpdateFcnOfS12B63 = OpaqueTLCBlockFcn("Update", 12, 63)
+%assign tlcUpdateFcnOfS12B64 = OpaqueTLCBlockFcn("Update", 12, 64)
+%assign tlcUpdateFcnOfS12B91 = OpaqueTLCBlockFcn("Update", 12, 91)
+%assign tlcUpdateFcnOfS12B115 = OpaqueTLCBlockFcn("Update", 12, 115)
+%assign tlcUpdateFcnOfS12B119 = OpaqueTLCBlockFcn("Update", 12, 119)
+%assign tlcUpdateFcnOfS12B120 = OpaqueTLCBlockFcn("Update", 12, 120)
+%assign tlcUpdateFcnOfS12B121 = OpaqueTLCBlockFcn("Update", 12, 121)
+%assign tlcUpdateFcnOfS12B122 = OpaqueTLCBlockFcn("Update", 12, 122)
+%assign tlcUpdateFcnOfS12B123 = OpaqueTLCBlockFcn("Update", 12, 123)
+%assign tlcUpdateFcnOfS12B124 = OpaqueTLCBlockFcn("Update", 12, 124)
+
+%<tlcUpdateFcnOfS12B0>\
+
+%<tlcUpdateFcnOfS12B2>\
+
+%<tlcUpdateFcnOfS12B9>\
+
+%<tlcUpdateFcnOfS12B10>\
+
+%<tlcUpdateFcnOfS12B11>\
+
+%<tlcUpdateFcnOfS12B12>\
+
+%<tlcUpdateFcnOfS12B13>\
+
+%<tlcUpdateFcnOfS12B14>\
+
+%<tlcUpdateFcnOfS12B17>\
+
+%<tlcUpdateFcnOfS12B18>\
+
+%<tlcUpdateFcnOfS12B19>\
+
+%<tlcUpdateFcnOfS12B20>\
+
+%<tlcUpdateFcnOfS12B22>\
+
+%<tlcUpdateFcnOfS12B29>\
+
+%<tlcUpdateFcnOfS12B31>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[3], "Update",0)
+
+EulerAugPDJoint_Synthesized_Atomic_Subsystem_For_Alg_Loop_1_Update();
+
+%endif
+%<tlcUpdateFcnOfS12B62>\
+
+%<tlcUpdateFcnOfS12B63>\
+
+%<tlcUpdateFcnOfS12B64>\
+
+%<tlcUpdateFcnOfS12B91>\
+
+%<tlcUpdateFcnOfS12B115>\
+
+%<tlcUpdateFcnOfS12B119>\
+
+%<tlcUpdateFcnOfS12B120>\
+
+%<tlcUpdateFcnOfS12B121>\
+
+%<tlcUpdateFcnOfS12B122>\
+
+%<tlcUpdateFcnOfS12B123>\
+
+%<tlcUpdateFcnOfS12B124>\
+%endfunction

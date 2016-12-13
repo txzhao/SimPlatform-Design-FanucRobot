@@ -1,0 +1,32 @@
+%implements s13_b0_cgugh_Update "C"
+
+%function Update(block, system) Output
+%assign tlcUpdateFcnOfS11B0 = OpaqueTLCBlockFcn("Update", 11, 0)
+%assign tlcUpdateFcnOfS11B2 = OpaqueTLCBlockFcn("Update", 11, 2)
+%assign tlcUpdateFcnOfS11B15 = OpaqueTLCBlockFcn("Update", 11, 15)
+%assign tlcUpdateFcnOfS11B19 = OpaqueTLCBlockFcn("Update", 11, 19)
+%assign tlcUpdateFcnOfS11B20 = OpaqueTLCBlockFcn("Update", 11, 20)
+%assign tlcUpdateFcnOfS11B21 = OpaqueTLCBlockFcn("Update", 11, 21)
+%assign tlcUpdateFcnOfS11B32 = OpaqueTLCBlockFcn("Update", 11, 32)
+%assign tlcUpdateFcnOfS11B71 = OpaqueTLCBlockFcn("Update", 11, 71)
+
+%<tlcUpdateFcnOfS11B0>\
+
+%<tlcUpdateFcnOfS11B2>\
+
+%<tlcUpdateFcnOfS11B15>\
+
+%<tlcUpdateFcnOfS11B19>\
+
+%<tlcUpdateFcnOfS11B20>\
+
+%<tlcUpdateFcnOfS11B21>\
+%if !SLibCGSysFcnIsEmptyForTid(CompiledModel.System[6], "Update",0)
+
+AugPDTask_Synthesized_Atomic_Subsystem_For_Alg_Loop_1_Update();
+
+%endif
+%<tlcUpdateFcnOfS11B32>\
+
+%<tlcUpdateFcnOfS11B71>\
+%endfunction
