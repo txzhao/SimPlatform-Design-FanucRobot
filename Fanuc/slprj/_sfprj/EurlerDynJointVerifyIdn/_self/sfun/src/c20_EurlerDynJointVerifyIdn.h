@@ -1,0 +1,48 @@
+#ifndef __c20_EurlerDynJointVerifyIdn_h__
+#define __c20_EurlerDynJointVerifyIdn_h__
+
+/* Include files */
+#include "sfc_sf.h"
+#include "sfc_mex.h"
+#include "rtwtypes.h"
+
+/* Type Definitions */
+typedef struct {
+  const char *context;
+  const char *name;
+  const char *dominantType;
+  const char *resolved;
+  uint32_T fileLength;
+  uint32_T fileTime1;
+  uint32_T fileTime2;
+} c20_ResolvedFunctionInfo;
+
+typedef struct {
+  SimStruct *S;
+  real_T c20_DH_Min[28];
+  real_T c20_Ft_Min[6];
+  real_T c20_Param_Min[60];
+  uint32_T chartNumber;
+  uint32_T instanceNumber;
+  boolean_T c20_doneDoubleBufferReInit;
+  boolean_T c20_isStable;
+  uint8_T c20_is_active_c20_EurlerDynJointVerifyIdn;
+  ChartInfoStruct chartInfo;
+} SFc20_EurlerDynJointVerifyIdnInstanceStruct;
+
+/* Named Constants */
+
+/* Variable Declarations */
+
+/* Variable Definitions */
+
+/* Function Declarations */
+extern const mxArray
+  *sf_c20_EurlerDynJointVerifyIdn_get_eml_resolved_functions_info(void);
+
+/* Function Definitions */
+extern void sf_c20_EurlerDynJointVerifyIdn_get_check_sum(mxArray *plhs[]);
+extern void c20_EurlerDynJointVerifyIdn_method_dispatcher(SimStruct *S, int_T
+  method, void *data);
+
+#endif
